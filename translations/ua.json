@@ -1,0 +1,68 @@
+{
+    "pages": {
+        "home": {
+            "title": "Останні публікації",
+            "description": "Всі публікації кешуються та оновлюються кожні 30 секунд для оптимальної продуктивності."
+        },
+        "post": {
+            "backToPosts": "Повернутися до публікацій",
+            "postNotFound": "Публікація не знайдена",
+            "failedToLoad": "Не вдалося завантажити публікацію",
+            "requestedPostNotFound": "Запитувана публікація не була знайдена"
+        },
+        "notFound": {
+            "title": "Сторінка не знайдена",
+            "description": "Вибачте, ми не змогли знайти сторінку, яку ви шукаєте.",
+            "backHome": "Повернутися на головну"
+        }
+    },
+    "components": {
+        "postsList": {
+            "noPostsFound": "Публікації не знайдено",
+            "unableToLoadPosts": "Неможливо завантажити публікації",
+            "failedToLoadPosts": "Не вдалося завантажити публікації"
+        },
+        "postDetail": {
+            "aboutAuthor": "Про автора",
+            "addComment": "Додати коментар",
+            "email": "Електронна пошта",
+            "website": "Веб-сайт",
+            "company": "Компанія",
+            "unknownAuthor": "Невідомий автор"
+        },
+        "commentForm": {
+            "name": "Ім'я",
+            "nameRequired": "Ім'я обов'язкове",
+            "nameTooShort": "Ім'я повинно містити щонайменше 2 символи",
+            "yourName": "Ваше ім'я",
+            "email": "Електронна пошта",
+            "emailRequired": "Електронна пошта обов'язкова",
+            "emailInvalid": "Будь ласка, введіть дійсну адресу електронної пошти",
+            "yourEmail": "your@email.com",
+            "comment": "Коментар",
+            "commentRequired": "Коментар обов'язковий",
+            "commentTooShort": "Коментар повинен містити щонайменше 10 символів",
+            "commentPlaceholder": "Поділіться своїми думками про цю публікацію...",
+            "submitComment": "Надіслати коментар",
+            "submitting": "Надсилання...",
+            "submitSuccess": "Коментар успішно надіслано!"
+        },
+        "nav": {
+            "home": "Головна",
+            "posts": "Публікації",
+            "searchPlaceholder": "Пошук публікацій...",
+            "openMenu": "Відкрити меню",
+            "searchAria": "Пошук"
+        },
+        "footer": {
+            "github": "GitHub",
+            "x": "X",
+            "contact": "Контакти",
+            "allRightsReserved": "Всі права захищені."
+        }
+    },
+    "common": {
+        "loading": "Завантаження...",
+        "error": "Помилка"
+    }
+}

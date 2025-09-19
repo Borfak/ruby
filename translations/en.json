@@ -1,0 +1,68 @@
+{
+    "pages": {
+        "home": {
+            "title": "Latest Posts",
+            "description": "All posts are cached and updated every 30 seconds for optimal performance."
+        },
+        "post": {
+            "backToPosts": "Back to Posts",
+            "postNotFound": "Post not found",
+            "failedToLoad": "Failed to load post",
+            "requestedPostNotFound": "The requested post could not be found"
+        },
+        "notFound": {
+            "title": "Page Not Found",
+            "description": "Sorry, we couldn't find the page you're looking for.",
+            "backHome": "Back to Home"
+        }
+    },
+    "components": {
+        "postsList": {
+            "noPostsFound": "No posts found",
+            "unableToLoadPosts": "Unable to load posts",
+            "failedToLoadPosts": "Failed to load posts"
+        },
+        "postDetail": {
+            "aboutAuthor": "About the Author",
+            "addComment": "Add a Comment",
+            "email": "Email",
+            "website": "Website",
+            "company": "Company",
+            "unknownAuthor": "Unknown Author"
+        },
+        "commentForm": {
+            "name": "Name",
+            "nameRequired": "Name is required",
+            "nameTooShort": "Name must be at least 2 characters",
+            "yourName": "Your name",
+            "email": "Email",
+            "emailRequired": "Email is required",
+            "emailInvalid": "Please enter a valid email address",
+            "yourEmail": "your@email.com",
+            "comment": "Comment",
+            "commentRequired": "Comment is required",
+            "commentTooShort": "Comment must be at least 10 characters",
+            "commentPlaceholder": "Share your thoughts about this post...",
+            "submitComment": "Submit Comment",
+            "submitting": "Submitting...",
+            "submitSuccess": "Comment submitted successfully!"
+        },
+        "nav": {
+            "home": "Home",
+            "posts": "Posts",
+            "searchPlaceholder": "Search posts...",
+            "openMenu": "Open menu",
+            "searchAria": "Search"
+        },
+        "footer": {
+            "github": "GitHub",
+            "x": "X",
+            "contact": "Contact",
+            "allRightsReserved": "All rights reserved."
+        }
+    },
+    "common": {
+        "loading": "Loading...",
+        "error": "Error"
+    }
+}
