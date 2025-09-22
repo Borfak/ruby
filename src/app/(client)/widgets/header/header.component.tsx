@@ -27,7 +27,7 @@ const Header: FC = () => {
     const t = useTranslations('components.nav')
 
     const searchQuery = useAppStore(state => state.searchQuery)
-    const setSearchQuery = useAppStore(state => state.setSearchQuery)
+    const handleSetSearchQuery = useAppStore(state => state.handleSetSearchQuery)
     const { theme, setTheme, resolvedTheme } = useTheme()
 
     return (
@@ -56,7 +56,7 @@ const Header: FC = () => {
                         radius='lg'
                         placeholder={t('searchPlaceholder')}
                         value={searchQuery}
-                        onChange={e => setSearchQuery(e.target.value)}
+                        onChange={e => handleSetSearchQuery(e.target.value)}
                         startContent={<Search size={16} className='text-foreground-400' />}
                         variant='bordered'
                     />

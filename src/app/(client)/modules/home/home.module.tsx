@@ -3,13 +3,14 @@
 import dynamic from 'next/dynamic'
 import type { FC } from 'react'
 import { PostsList } from '../../features/posts-list'
+import { Locale } from 'next-intl'
 
 const HeroBlockComponent = dynamic(() =>
     import('../../features/block').then(m => m.HeroBlockComponent)
 )
 
 interface IProps {
-    locale: string
+    locale: Locale
 }
 
 const HomeModule: FC<Readonly<IProps>> = ({ locale }) => {

@@ -29,7 +29,8 @@ export const PostsList: FC<IProps> = ({ locale = 'en' }) => {
     }
 
     const normalized = (searchQuery || '').trim().toLowerCase()
-    const filtered = (posts || []).filter(
+    const postsArray = Array.isArray(posts) ? posts : []
+    const filtered = postsArray.filter(
         p =>
             !normalized ||
             p.title.toLowerCase().includes(normalized) ||

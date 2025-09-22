@@ -1,28 +1,28 @@
-import ky from 'ky';
+import { restApiFetcher } from '@/pkg/libraries/rest-api/fetcher';
 import type { Post, User } from '../../models';
+import type { QueryFunctionContext } from '@tanstack/react-query';
 
-const api = ky.create({
-	prefixUrl: 'https://jsonplaceholder.typicode.com',
-});
-
-export const postsApi = {
-	getAllPosts: async (): Promise<Post[]> => {
-		return api.get('posts').json();
+export const postsQueryApi = {
+	list: async (opt: QueryFunctionContext): Promise<Post[]> => {
+		return restApiFetcher.get('posts', { signal: opt.signal }).json();
 	},
 
-	getPostById: async (id: number): Promise<Post> => {
-		return api.get(`posts/${id}`).json();
+	byId: async (opt: QueryFunctionContext, params: { id: number }): Promise<Post> => {
+		const { id } = params;
+		return restApiFetcher.get(`posts/${id}`, { signal: opt.signal }).json();
 	},
 
-	getPostBySlug: async (slug: string): Promise<Post> => {
+	bySlug: async (opt: QueryFunctionContext, params: { slug: string }): Promise<Post> => {
+		const { slug } = params;
 		const id = parseInt(slug, 10);
 		if (isNaN(id)) {
 			throw new Error('Invalid post slug');
 		}
-		return api.get(`posts/${id}`).json();
+		return restApiFetcher.get(`posts/${id}`, { signal: opt.signal }).json();
 	},
 
-	getUserById: async (id: number): Promise<User> => {
-		return api.get(`users/${id}`).json();
+	userById: async (opt: QueryFunctionContext, params: { userId: number }): Promise<User> => {
+		const { userId } = params;
+		return restApiFetcher.get(`users/${userId}`, { signal: opt.signal }).json();
 	},
 };

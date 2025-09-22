@@ -18,7 +18,7 @@ interface IProps {
 }
 
 export const CommentForm: FC<IProps> = ({ postId }) => {
-    const { setLoading, clearError } = useAppStore()
+    const { handleSetLoading, handleClearError } = useAppStore()
     const t = useTranslations('components.commentForm')
 
     const {
@@ -30,8 +30,8 @@ export const CommentForm: FC<IProps> = ({ postId }) => {
 
     const onSubmit = async (data: CommentFormData) => {
         try {
-            setLoading(true)
-            clearError()
+            handleSetLoading(true)
+            handleClearError()
 
             console.log('Submitting comment for post:', postId, data)
 
@@ -43,7 +43,7 @@ export const CommentForm: FC<IProps> = ({ postId }) => {
         } catch (error) {
             console.error('Error submitting comment:', error)
         } finally {
-            setLoading(false)
+            handleSetLoading(false)
         }
     }
 

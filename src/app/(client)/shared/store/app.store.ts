@@ -5,10 +5,11 @@ interface AppState {
 	isLoading: boolean;
 	error: string | null;
 	searchQuery: string;
-	setLoading: (loading: boolean) => void;
-	setError: (error: string | null) => void;
-	clearError: () => void;
-	setSearchQuery: (query: string) => void;
+	handleSetLoading: (loading: boolean) => void;
+	handleSetError: (error: string | null) => void;
+	handleClearError: () => void;
+	handleSetSearchQuery: (query: string) => void;
+	handleClearStore: () => void;
 }
 
 export const useAppStore = create<AppState>()(
@@ -17,10 +18,12 @@ export const useAppStore = create<AppState>()(
 			isLoading: false,
 			error: null,
 			searchQuery: '',
-			setLoading: (isLoading) => set({ isLoading }),
-			setError: (error) => set({ error }),
-			clearError: () => set({ error: null }),
-			setSearchQuery: (searchQuery) => set({ searchQuery }),
-		})	
+			handleSetLoading: (isLoading) => set({ isLoading }),
+			handleSetError: (error) => set({ error }),
+			handleClearError: () => set({ error: null }),
+			handleSetSearchQuery: (searchQuery) => set({ searchQuery }),
+			handleClearStore: () => set({ isLoading: false, error: null, searchQuery: '' }),
+		}),
+		{ enabled: process.env.NODE_ENV === 'development', name: 'app-store' }
 	)
 );
