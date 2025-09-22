@@ -10,7 +10,7 @@ interface IProps {
   locale?: string
 }
 
-export const PostCard: FC<IProps> = ({ post, locale = 'en' }) => {
+export const PostCard: FC<Readonly<IProps>> = ({ post, locale = 'en' }) => {
   return (
     <Link href={`/${locale}/posts/${post.id}`} className='block'>
       <Card isPressable isHoverable className='h-full transition-transform duration-200 hover:-translate-y-1'>

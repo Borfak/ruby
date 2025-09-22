@@ -1,6 +1,6 @@
 import { Locale, NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
-import { type ReactNode } from 'react'
+import { type FC, type ReactNode } from 'react'
 
 import RestApiProvider from '@/pkg/libraries/rest-api/rest-api.provider'
 import { UiProvider } from '@/pkg/libraries/ui'
@@ -12,7 +12,8 @@ interface IProps {
   params: Promise<{ locale: Locale }>
 }
 
-export default async function LocaleLayout({ children, params }: IProps) {
+const LocaleLayout: FC<Readonly<IProps>> = async (props) => {
+  const { children, params } = props
   const { locale } = await params
   const messages = await getMessages()
 
@@ -26,3 +27,5 @@ export default async function LocaleLayout({ children, params }: IProps) {
     </NextIntlClientProvider>
   )
 }
+
+export default LocaleLayout

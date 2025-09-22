@@ -51,7 +51,7 @@ export async function generateStaticParams() {
   }
 }
 
-const PostPage: FC<IProps> = async ({ params }) => {
+const PostPage: FC<Readonly<IProps>> = async ({ params }) => {
   const { locale, slug } = await params
   const t = await getTranslations({ locale, namespace: 'pages.post' })
 

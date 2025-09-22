@@ -15,7 +15,7 @@ interface IProps {
   slug: string
 }
 
-export const PostDetail: FC<IProps> = ({ slug }) => {
+export const PostDetail: FC<Readonly<IProps>> = ({ slug }) => {
   const { data: post, isLoading: isPostLoading, isError: isPostError, error: postError } = usePostBySlugQuery(slug)
 
   const { data: user, isLoading: isUserLoading } = useUserQuery(post?.userId || 0)

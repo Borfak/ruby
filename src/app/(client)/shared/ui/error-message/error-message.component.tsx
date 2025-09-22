@@ -10,7 +10,7 @@ interface IProps {
   color?: 'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger'
 }
 
-export const ErrorMessage: FC<IProps> = ({ message, title = 'Error', variant = 'faded', color = 'danger' }) => {
+export const ErrorMessage: FC<Readonly<IProps>> = ({ message, title = 'Error', variant = 'faded', color = 'danger' }) => {
   return (
     <Alert
       color={color}

@@ -8,7 +8,7 @@ interface IProps {
   className?: string
 }
 
-export const LoadingSpinner: FC<IProps> = ({ size = 'md', color = 'primary', className }) => {
+export const LoadingSpinner: FC<Readonly<IProps>> = ({ size = 'md', color = 'primary', className }) => {
   return (
     <div className={`flex items-center justify-center p-4 ${className || ''}`}>
       <Spinner size={size} color={color} />

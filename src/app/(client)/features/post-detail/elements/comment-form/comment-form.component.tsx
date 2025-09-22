@@ -19,7 +19,7 @@ interface IProps {
   postId: number
 }
 
-export const CommentForm: FC<IProps> = ({ postId }) => {
+export const CommentForm: FC<Readonly<IProps>> = ({ postId }) => {
   const { handleSetLoading, handleClearError } = useAppStore()
   const t = useTranslations('components.commentForm')
 
