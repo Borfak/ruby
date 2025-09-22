@@ -8,23 +8,21 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { getQueryClient } from './service'
 
 interface IProps {
-    children: ReactNode
+  children: ReactNode
 }
 
-const RestApiProvider: FC<Readonly<IProps>> = props => {
-    const { children } = props
+const RestApiProvider: FC<Readonly<IProps>> = (props) => {
+  const { children } = props
 
-    const queryClient = getQueryClient()
+  const queryClient = getQueryClient()
 
-    return (
-        <QueryClientProvider client={queryClient}>
-            {children}
+  return (
+    <QueryClientProvider client={queryClient}>
+      {children}
 
-            {process.env.NODE_ENV === 'development' && (
-                <ReactQueryDevtools initialIsOpen={false} />
-            )}
-        </QueryClientProvider>
-    )
+      {process.env.NODE_ENV === 'development' && <ReactQueryDevtools initialIsOpen={false} />}
+    </QueryClientProvider>
+  )
 }
 
 export default RestApiProvider

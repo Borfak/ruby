@@ -1,1 +1,1 @@
-export { CommentForm } from './comment-form.component';
+export { CommentForm } from './comment-form.component'

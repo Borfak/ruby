@@ -1,49 +1,36 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 import type { FC } from 'react'
 
 const Footer: FC = () => {
-    const t = useTranslations('components.footer')
-    return (
-        <footer className='border-t border-divider bg-background/70 backdrop-blur'>
+  const t = useTranslations('components.footer')
+  return (
+    <footer className='border-divider bg-background/70 border-t backdrop-blur'>
+      <div className='mx-auto w-full max-w-screen-lg px-4 py-8 md:px-6'>
+        <div className='flex flex-col items-center justify-between gap-4 sm:flex-row'>
+          <p className='text-foreground-500 text-center text-sm sm:text-left'>
+            © {new Date().getFullYear()} Ruby. {t('allRightsReserved')}
+          </p>
 
-            <div className='mx-auto w-full max-w-screen-lg px-4 md:px-6 py-8'>
-                <div className='flex flex-col sm:flex-row items-center justify-between gap-4'>
+          <div className='text-foreground-500 flex items-center gap-4'>
+            <Link href='https://github.com' target='_blank' rel='noreferrer' className='hover:text-foreground'>
+              {t('github')}
+            </Link>
 
-                    <p className='text-center sm:text-left text-sm text-foreground-500'>
-                        © {new Date().getFullYear()} Ruby. {t('allRightsReserved')}
-                    </p>
+            <Link href='https://x.com' target='_blank' rel='noreferrer' className='hover:text-foreground'>
+              {t('x')}
+            </Link>
 
-                    <div className='flex items-center gap-4 text-foreground-500'>
-                        <Link
-                            href='https://github.com'
-                            target='_blank'
-                            rel='noreferrer'
-                            className='hover:text-foreground'
-                        >
-                            {t('github')}
-                        </Link>
-
-                        <Link
-                            href='https://x.com'
-                            target='_blank'
-                            rel='noreferrer'
-                            className='hover:text-foreground'
-                        >
-                            {t('x')}
-                        </Link>
-
-                        <Link href='mailto:info@example.com' className='hover:text-foreground'>
-                            {t('contact')}
-                        </Link>
-                    </div>
-
-                </div>
-            </div>
-        </footer>
-    )
+            <Link href='mailto:info@example.com' className='hover:text-foreground'>
+              {t('contact')}
+            </Link>
+          </div>
+        </div>
+      </div>
+    </footer>
+  )
 }
 
 export default Footer

@@ -1,1 +1,1 @@
-export type { Post, User } from './post.model';
+export type { Post, User } from './post.model'

@@ -1,2 +1,1 @@
-export { useAppStore } from './app.store';
-
+export { useAppStore } from './app.store'

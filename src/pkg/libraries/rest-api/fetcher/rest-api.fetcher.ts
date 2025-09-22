@@ -7,4 +7,4 @@ export const restApiFetcher: KyInstance = ky.create({
 
   credentials: 'include',
   throwHttpErrors: false,
-}) 
+})

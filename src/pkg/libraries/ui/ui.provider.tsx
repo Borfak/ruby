@@ -7,33 +7,33 @@ import { HeroUIProvider } from '@heroui/react'
 import { ToastProvider } from '@heroui/toast'
 
 interface IProps {
-    children: ReactNode
-    locale?: string
+  children: ReactNode
+  locale?: string
 }
 
-const UiProvider: FC<Readonly<IProps>> = props => {
-    const { children, locale } = props
+const UiProvider: FC<Readonly<IProps>> = (props) => {
+  const { children, locale } = props
 
-    return (
-        <HeroUIProvider locale={locale}>
-            <NextThemesProvider attribute='class' defaultTheme='system' enableSystem>
-                {children}
+  return (
+    <HeroUIProvider locale={locale}>
+      <NextThemesProvider attribute='class' defaultTheme='system' enableSystem>
+        {children}
 
-                <ToastProvider
-                    maxVisibleToasts={3}
-                    placement='top-right'
-                    toastProps={{
-                        radius: 'md',
-                        timeout: 3500,
-                        classNames: {
-                            title: 'first-letter:uppercase',
-                            description: 'first-letter:uppercase',
-                        },
-                    }}
-                />
-            </NextThemesProvider>
-        </HeroUIProvider>
-    )
+        <ToastProvider
+          maxVisibleToasts={3}
+          placement='top-right'
+          toastProps={{
+            radius: 'md',
+            timeout: 3500,
+            classNames: {
+              title: 'first-letter:uppercase',
+              description: 'first-letter:uppercase',
+            },
+          }}
+        />
+      </NextThemesProvider>
+    </HeroUIProvider>
+  )
 }
 
 export default UiProvider

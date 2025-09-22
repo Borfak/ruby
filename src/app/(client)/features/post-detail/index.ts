@@ -1,1 +1,1 @@
-export { PostDetail } from './post-detail.component';
+export { PostDetail } from './post-detail.component'

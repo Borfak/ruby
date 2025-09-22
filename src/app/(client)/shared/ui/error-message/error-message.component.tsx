@@ -1,28 +1,24 @@
-import { Alert } from '@heroui/react'
 import { AlertTriangle } from 'lucide-react'
 import { type FC } from 'react'
 
+import { Alert } from '@heroui/react'
+
 interface IProps {
-    message: string
-    title?: string
-    variant?: 'flat' | 'faded' | 'bordered' | 'solid'
-    color?: 'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger'
+  message: string
+  title?: string
+  variant?: 'flat' | 'faded' | 'bordered' | 'solid'
+  color?: 'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger'
 }
 
-export const ErrorMessage: FC<IProps> = ({
-    message,
-    title = 'Error',
-    variant = 'faded',
-    color = 'danger',
-}) => {
-    return (
-        <Alert
-            color={color}
-            variant={variant}
-            startContent={<AlertTriangle size={20} />}
-            title={title}
-            description={message}
-            className='mb-4'
-        />
-    )
+export const ErrorMessage: FC<IProps> = ({ message, title = 'Error', variant = 'faded', color = 'danger' }) => {
+  return (
+    <Alert
+      color={color}
+      variant={variant}
+      startContent={<AlertTriangle size={20} />}
+      title={title}
+      description={message}
+      className='mb-4'
+    />
+  )
 }
