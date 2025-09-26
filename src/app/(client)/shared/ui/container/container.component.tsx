@@ -2,15 +2,18 @@ import { FC, ReactNode } from 'react'
 
 import { cn } from '@heroui/react'
 
+// interface
 interface IProps {
   children: ReactNode
   className?: string
   variant?: 'main' | 'section'
 }
 
+//component
 const ContainerComponent: FC<Readonly<IProps>> = (props) => {
   const { children, className = '', variant = 'main' } = props
 
+  // return
   return (
     <>
       {variant === 'main' ? (

@@ -1,7 +1,7 @@
 'use client'
 
 import { Search, Sparkles } from 'lucide-react'
-import { useLocale, useTranslations } from 'next-intl'
+import { useTranslations } from 'next-intl'
 import { useTheme } from 'next-themes'
 import type { FC } from 'react'
 
@@ -12,7 +12,6 @@ import {
   DropdownMenu,
   DropdownTrigger,
   Input,
-  Link,
   Navbar,
   NavbarBrand,
   NavbarContent,
@@ -22,16 +21,22 @@ import {
   NavbarMenuToggle,
 } from '@heroui/react'
 
+import { Link } from '@/pkg/libraries/locale'
+
 import { useAppStore } from '../../shared/store'
 
-const Header: FC = () => {
-  const locale = useLocale()
+// interface
+interface IProps {}
+
+// component
+const Header: FC<Readonly<IProps>> = () => {
   const t = useTranslations('components.nav')
 
   const searchQuery = useAppStore((state) => state.searchQuery)
   const handleAppStore = useAppStore((state) => state.handleAppStore)
   const { theme, setTheme, resolvedTheme } = useTheme()
 
+  // return
   return (
     <Navbar
       maxWidth='xl'
@@ -40,7 +45,7 @@ const Header: FC = () => {
       <NavbarContent justify='start'>
         <NavbarMenuToggle className='sm:hidden' aria-label={t('openMenu')} />
         <NavbarBrand>
-          <Link href={`/${locale}`} className='text-foreground inline-flex items-center gap-2 font-bold'>
+          <Link href={'/'} className='text-foreground inline-flex items-center gap-2 font-bold'>
             <Sparkles size={18} className='text-primary' />
             Ruby
           </Link>
@@ -92,12 +97,12 @@ const Header: FC = () => {
 
       <NavbarMenu>
         <NavbarMenuItem>
-          <Link href={`/${locale}`} className='text-foreground-600 hover:text-foreground w-full'>
+          <Link href={'/'} className='text-foreground-600 hover:text-foreground w-full'>
             {t('home')}
           </Link>
         </NavbarMenuItem>
         <NavbarMenuItem>
-          <Link href={`/${locale}`} className='text-foreground-600 hover:text-foreground w-full'>
+          <Link href={'/'} className='text-foreground-600 hover:text-foreground w-full'>
             {t('posts')}
           </Link>
         </NavbarMenuItem>

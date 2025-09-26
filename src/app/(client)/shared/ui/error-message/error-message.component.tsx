@@ -3,6 +3,7 @@ import { type FC } from 'react'
 
 import { Alert } from '@heroui/react'
 
+// interface
 interface IProps {
   message: string
   title?: string
@@ -10,7 +11,14 @@ interface IProps {
   color?: 'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger'
 }
 
-export const ErrorMessage: FC<Readonly<IProps>> = ({ message, title = 'Error', variant = 'faded', color = 'danger' }) => {
+// component
+export const ErrorMessage: FC<Readonly<IProps>> = ({
+  message,
+  title = 'Error',
+  variant = 'faded',
+  color = 'danger',
+}) => {
+  // return
   return (
     <Alert
       color={color}

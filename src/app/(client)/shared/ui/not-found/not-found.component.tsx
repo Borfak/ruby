@@ -8,12 +8,14 @@ import { Button } from '@heroui/button'
 
 import { useRouter } from '@/pkg/libraries/locale'
 
+// interface
 interface IProps {
   title?: string
   description?: string
   buttonText?: string
 }
 
+// component
 const NotFoundComponent: FC<Readonly<IProps>> = (props) => {
   const { title, description, buttonText } = props
 
@@ -21,6 +23,7 @@ const NotFoundComponent: FC<Readonly<IProps>> = (props) => {
 
   const router = useRouter()
 
+  // return
   return (
     <div className='grid h-fit w-fit place-items-center items-center gap-4'>
       <CircleAlert className='text-primary size-10' />

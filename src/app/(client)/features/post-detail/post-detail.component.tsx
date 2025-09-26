@@ -11,18 +11,21 @@ import { CommentForm } from './elements/comment-form/comment-form.component'
 import { usePostBySlugQuery, useUserQuery } from '../../entities/api'
 import { ErrorMessage, LoadingSpinner } from '../../shared/ui'
 
+// interface
 interface IProps {
   slug: string
 }
 
-export const PostDetail: FC<Readonly<IProps>> = ({ slug }) => { // slug not right
+// component
+export const PostDetail: FC<Readonly<IProps>> = ({ slug }) => {
+  // slug not right
   const { data: post, isLoading: isPostLoading, isError: isPostError, error: postError } = usePostBySlugQuery(slug)
 
   const { data: user, isLoading: isUserLoading } = useUserQuery(post?.userId || 0)
   const t = useTranslations('components.postDetail')
   const tPost = useTranslations('pages.post')
   const tCommon = useTranslations('common')
-//delete
+  //delete
   if (isPostLoading) {
     return <LoadingSpinner size='lg' />
   }
@@ -35,6 +38,7 @@ export const PostDetail: FC<Readonly<IProps>> = ({ slug }) => { // slug not righ
     return <ErrorMessage message={tPost('requestedPostNotFound')} title={tPost('postNotFound')} />
   }
 
+  //return
   return (
     <div className='mx-auto max-w-4xl space-y-6'>
       <Card className='border-divider bg-background/80 border backdrop-blur'>

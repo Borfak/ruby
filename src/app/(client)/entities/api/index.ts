@@ -1,9 +1,8 @@
-// Posts API - commonly used exports
 export { postsQueryApi } from './posts/posts.api'
-export { 
-  postBySlugOptions, 
-  postsListOptions, 
-  usePostBySlugQuery, 
+export {
+  postBySlugOptions,
+  postsListOptions,
+  usePostBySlugQuery,
   usePostsQuery,
-  useUserQuery
+  useUserQuery,
 } from './posts/posts.query'

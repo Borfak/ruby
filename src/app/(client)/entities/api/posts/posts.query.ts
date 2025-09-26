@@ -2,7 +2,7 @@ import { queryOptions, useQuery } from '@tanstack/react-query'
 
 import { postsQueryApi } from './posts.api'
 
-
+// options
 export const postsListOptions = () =>
   queryOptions({
     queryKey: ['posts', 'list'] as const,
@@ -30,6 +30,7 @@ export const userByIdOptions = (userId: number) =>
     enabled: !!userId && userId > 0,
   })
 
+// hooks
 export const usePostsQuery = () => {
   return useQuery(postsListOptions())
 }

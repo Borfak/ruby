@@ -9,12 +9,15 @@ import { getQueryClient } from '@/pkg/libraries/rest-api/service'
 
 import { HomeModule } from '../../modules/home/index'
 
+// cache
+export const revalidate = 30
+
+// interface
 interface IProps {
   params: Promise<{ locale: Locale }>
 }
 
-export const revalidate = 30
-
+// component
 const HomePage: FC<Readonly<IProps>> = async (props) => {
   const { locale } = await props.params
 
@@ -25,6 +28,7 @@ const HomePage: FC<Readonly<IProps>> = async (props) => {
 
   const dehydratedState = dehydrate(queryClient)
 
+  // return
   return (
     <HydrationBoundary state={dehydratedState}>
       <HomeModule locale={locale} />

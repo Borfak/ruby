@@ -5,7 +5,11 @@ import type { FC } from 'react'
 
 import { Card, CardBody } from '@heroui/react'
 
-const HeroBlockComponent: FC = () => {
+// interface
+interface IProps {}
+
+// component
+const HeroBlockComponent: FC<Readonly<IProps>> = () => {
   const t = useTranslations('pages.home')
   return (
     <Card className='border-divider from-primary/5 via-background to-secondary/5 mb-8 overflow-hidden border bg-gradient-to-br'>

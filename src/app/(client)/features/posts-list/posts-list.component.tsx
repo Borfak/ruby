@@ -7,10 +7,12 @@ import { usePostsQuery } from '../../entities/api'
 import { useAppStore } from '../../shared/store'
 import { ErrorMessage, LoadingSpinner, PostCard } from '../../shared/ui'
 
+//interface
 interface IProps {
   locale?: string
 }
 
+//component
 export const PostsList: FC<Readonly<IProps>> = ({ locale = 'en' }) => {
   const { data: posts, isLoading, isError, error } = usePostsQuery()
   const t = useTranslations('components.postsList')
@@ -38,6 +40,7 @@ export const PostsList: FC<Readonly<IProps>> = ({ locale = 'en' }) => {
     )
   }
 
+  // return
   return (
     <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
       {filtered.map((post) => (

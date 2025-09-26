@@ -5,9 +5,11 @@ import { useTranslations } from 'next-intl'
 import { type FC } from 'react'
 import { useForm } from 'react-hook-form'
 
-import { useAppStore } from '../../../../shared/store'
-import { Input, Textarea, Button } from '@heroui/react'
+import { Button, Input, Textarea } from '@heroui/react'
 
+import { useAppStore } from '../../../../shared/store'
+
+// interface
 interface CommentFormData {
   name: string
   email: string
@@ -18,6 +20,7 @@ interface IProps {
   postId: number
 }
 
+// component
 export const CommentForm: FC<Readonly<IProps>> = ({ postId }) => {
   const handleAppStore = useAppStore((state) => state.handleAppStore)
   const t = useTranslations('components.commentForm')
@@ -42,10 +45,10 @@ export const CommentForm: FC<Readonly<IProps>> = ({ postId }) => {
       alert(t('submitSuccess'))
     } catch (error) {
       console.error('Error submitting comment:', error)
-    } finally {
     }
   }
 
+  // return
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='space-y-4'>
       <div className='grid grid-cols-1 gap-4 md:grid-cols-2'>

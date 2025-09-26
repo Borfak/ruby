@@ -3,7 +3,9 @@ import type { NextPage } from 'next'
 import { ContainerComponent } from '../../shared/ui/container'
 import NotFoundComponent from '../../shared/ui/not-found/not-found.component'
 
+// component
 const NotFound: NextPage = () => {
+  // return
   return (
     <ContainerComponent className='grid h-full items-center justify-center'>
       <NotFoundComponent />

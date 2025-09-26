@@ -1,11 +1,18 @@
 'use client'
 
-import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import type { FC } from 'react'
 
-const Footer: FC = () => {
+import { Link } from '@/pkg/libraries/locale'
+
+// interface
+interface IProps {}
+
+// component
+const Footer: FC<Readonly<IProps>> = () => {
   const t = useTranslations('components.footer')
+
+  // return
   return (
     <footer className='border-divider bg-background/70 border-t backdrop-blur'>
       <div className='mx-auto w-full max-w-screen-lg px-4 py-8 md:px-6'>
