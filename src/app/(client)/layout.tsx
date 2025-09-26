@@ -1,18 +1,16 @@
 import { type FC, type ReactNode } from 'react'
 
-import '@/config/styles/global.css'
 
 interface IProps {
   children: ReactNode
 }
 
+// component
 const RootLayout: FC<Readonly<IProps>> = (props) => {
   const { children } = props
-  return (
-    <html suppressHydrationWarning>
-      <body>{children}</body>
-    </html>
-  )
+
+  // return
+  return children
 }
 
 export default RootLayout

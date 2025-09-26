@@ -6,7 +6,7 @@ import { type FC } from 'react'
 
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
 
-import { postBySlugOptions, userByIdOptions } from '@/client/entities/api/posts/posts.query'
+import { postBySlugOptions, postsListOptions, userByIdOptions } from '@/client/entities/api/posts/posts.query'
 import type { Post } from '@/client/entities/models'
 import { getQueryClient } from '@/pkg/libraries/rest-api/service/rest-api.service'
 
@@ -31,25 +31,19 @@ async function prefetchPostDetail(slug: string) {
   return dehydrate(queryClient)
 }
 
-export async function generateStaticParams() {
-  try {
-    const baseUrl = process.env.NEXT_PUBLIC_CLIENT_API_URL
-    if (!baseUrl) {
-      console.error('NEXT_PUBLIC_CLIENT_API_URL is not defined in environment variables')
-      return []
-    }
+// export async function generateStaticParams() {
+//   try {
+//     const queryClient = getQueryClient()
+//     const posts = await queryClient.fetchQuery(postsListOptions()) as Post[]
 
-    const response = await fetch(`${baseUrl}/posts`)
-    const posts = await response.json()
-
-    return posts.slice(0, 20).map((post: { id: number }) => ({
-      slug: post.id.toString(),
-    }))
-  } catch (error) {
-    console.error('Error generating static params:', error)
-    return []
-  }
-}
+//     return posts.slice(0, 20).map((post) => ({
+//       slug: post.id.toString(),
+//     }))
+//   } catch (error) {
+    
+//     return []
+//   }
+// }
 
 const PostPage: FC<Readonly<IProps>> = async ({ params }) => {
   const { locale, slug } = await params

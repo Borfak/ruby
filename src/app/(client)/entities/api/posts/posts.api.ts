@@ -1,30 +1,26 @@
 import type { QueryFunctionContext } from '@tanstack/react-query'
-
 import { restApiFetcher } from '@/pkg/libraries/rest-api/fetcher'
-
 import type { Post, User } from '../../models'
 
+//GET request helper
+const apiGet = async <T>(opt: QueryFunctionContext, url: string): Promise<T> => {
+  return restApiFetcher
+    .get(url, { signal: opt.signal, cache: 'force-cache', next: { revalidate: 30 } })
+    .json()
+}
+
 export const postsQueryApi = {
-  list: async (opt: QueryFunctionContext): Promise<Post[]> => {
-    return restApiFetcher.get('posts', { signal: opt.signal }).json()
-  },
+  list: (opt: QueryFunctionContext) => apiGet<Post[]>(opt, 'posts'),
 
-  byId: async (opt: QueryFunctionContext, params: { id: number }): Promise<Post> => {
-    const { id } = params
-    return restApiFetcher.get(`posts/${id}`, { signal: opt.signal }).json()
-  },
+  byId: (opt: QueryFunctionContext, { id }: { id: number }) =>
+    apiGet<Post>(opt, `posts/${id}`),
 
-  bySlug: async (opt: QueryFunctionContext, params: { slug: string }): Promise<Post> => {
-    const { slug } = params
+  bySlug: (opt: QueryFunctionContext, { slug }: { slug: string }) => {
     const id = parseInt(slug, 10)
-    if (isNaN(id)) {
-      throw new Error('Invalid post slug')
-    }
-    return restApiFetcher.get(`posts/${id}`, { signal: opt.signal }).json()
+    if (isNaN(id)) throw new Error('Invalid post slug')
+    return apiGet<Post>(opt, `posts/${id}`)
   },
 
-  userById: async (opt: QueryFunctionContext, params: { userId: number }): Promise<User> => {
-    const { userId } = params
-    return restApiFetcher.get(`users/${userId}`, { signal: opt.signal }).json()
-  },
+  userById: (opt: QueryFunctionContext, { userId }: { userId: number }) =>
+    apiGet<User>(opt, `users/${userId}`),
 }

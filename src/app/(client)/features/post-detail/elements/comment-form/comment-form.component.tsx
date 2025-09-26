@@ -5,9 +5,8 @@ import { useTranslations } from 'next-intl'
 import { type FC } from 'react'
 import { useForm } from 'react-hook-form'
 
-import { Button, Input, Textarea } from '@heroui/react'
-
 import { useAppStore } from '../../../../shared/store'
+import { Input, Textarea, Button } from '@heroui/react'
 
 interface CommentFormData {
   name: string
@@ -20,7 +19,7 @@ interface IProps {
 }
 
 export const CommentForm: FC<Readonly<IProps>> = ({ postId }) => {
-  const { handleSetLoading, handleClearError } = useAppStore()
+  const handleAppStore = useAppStore((state) => state.handleAppStore)
   const t = useTranslations('components.commentForm')
 
   const {
@@ -32,8 +31,7 @@ export const CommentForm: FC<Readonly<IProps>> = ({ postId }) => {
 
   const onSubmit = async (data: CommentFormData) => {
     try {
-      handleSetLoading(true)
-      handleClearError()
+      handleAppStore({ error: null })
 
       console.log('Submitting comment for post:', postId, data)
 
@@ -45,7 +43,6 @@ export const CommentForm: FC<Readonly<IProps>> = ({ postId }) => {
     } catch (error) {
       console.error('Error submitting comment:', error)
     } finally {
-      handleSetLoading(false)
     }
   }
 

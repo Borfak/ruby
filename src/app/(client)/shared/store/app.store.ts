@@ -1,29 +1,24 @@
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 
-interface AppState {
-  isLoading: boolean
+// interface
+interface IState {
   error: string | null
   searchQuery: string
-  handleSetLoading: (loading: boolean) => void
-  handleSetError: (error: string | null) => void
-  handleClearError: () => void
-  handleSetSearchQuery: (query: string) => void
-  handleClearStore: () => void
 }
 
-export const useAppStore = create<AppState>()(
+interface IStore extends IState {
+  handleAppStore: (value: Partial<IState>) => void
+}
+
+// store
+export const useAppStore = create<IStore>()(
   devtools(
     (set) => ({
-      isLoading: false,
       error: null,
       searchQuery: '',
-      handleSetLoading: (isLoading) => set({ isLoading }),
-      handleSetError: (error) => set({ error }),
-      handleClearError: () => set({ error: null }),
-      handleSetSearchQuery: (searchQuery) => set({ searchQuery }),
-      handleClearStore: () => set({ isLoading: false, error: null, searchQuery: '' }),
+      handleAppStore: (value: Partial<IState>) => set((state: IState) => ({ ...state, ...value })),
     }),
-    { enabled: process.env.NODE_ENV === 'development', name: 'app-store' },
+    { enabled: process.env.NODE_ENV !== 'production' && typeof window !== 'undefined' },
   ),
 )

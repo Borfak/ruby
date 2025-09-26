@@ -81,10 +81,7 @@ const eslintConfig = [
   {
     ignores: [
       'node_modules/',
-      '.next/',
-      './src/app/(payload)/(app)/admin/**',
-      './src/app/(payload)/migrations/**',
-      './src/app/(payload)/payload-types.ts',
+      '.next/'
     ],
   },
 ]

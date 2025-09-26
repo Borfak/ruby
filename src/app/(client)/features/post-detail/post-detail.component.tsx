@@ -15,14 +15,14 @@ interface IProps {
   slug: string
 }
 
-export const PostDetail: FC<Readonly<IProps>> = ({ slug }) => {
+export const PostDetail: FC<Readonly<IProps>> = ({ slug }) => { // slug not right
   const { data: post, isLoading: isPostLoading, isError: isPostError, error: postError } = usePostBySlugQuery(slug)
 
   const { data: user, isLoading: isUserLoading } = useUserQuery(post?.userId || 0)
   const t = useTranslations('components.postDetail')
   const tPost = useTranslations('pages.post')
   const tCommon = useTranslations('common')
-
+//delete
   if (isPostLoading) {
     return <LoadingSpinner size='lg' />
   }

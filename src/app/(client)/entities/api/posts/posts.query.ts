@@ -2,6 +2,7 @@ import { queryOptions, useQuery } from '@tanstack/react-query'
 
 import { postsQueryApi } from './posts.api'
 
+
 export const postsListOptions = () =>
   queryOptions({
     queryKey: ['posts', 'list'] as const,
