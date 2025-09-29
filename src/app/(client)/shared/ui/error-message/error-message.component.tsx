@@ -12,12 +12,7 @@ interface IProps {
 }
 
 // component
-export const ErrorMessage: FC<Readonly<IProps>> = ({
-  message,
-  title = 'Error',
-  variant = 'faded',
-  color = 'danger',
-}) => {
+const ErrorMessage: FC<Readonly<IProps>> = ({ message, title = 'Error', variant = 'faded', color = 'danger' }) => {
   // return
   return (
     <Alert
@@ -30,3 +25,5 @@ export const ErrorMessage: FC<Readonly<IProps>> = ({
     />
   )
 }
+
+export default ErrorMessage

@@ -34,21 +34,6 @@ async function prefetchPostDetail(slug: string) {
   return dehydrate(queryClient)
 }
 
-// export async function generateStaticParams() {
-//   try {
-//     const queryClient = getQueryClient()
-//     const posts = await queryClient.fetchQuery(postsListOptions()) as Post[]
-
-//     return posts.slice(0, 20).map((post) => ({
-//       slug: post.id.toString(),
-//     }))
-//   } catch (error) {
-
-//     return []
-//   }
-// }
-
-//
 // component
 const PostPage: FC<Readonly<IProps>> = async ({ params }) => {
   const { locale, slug } = await params

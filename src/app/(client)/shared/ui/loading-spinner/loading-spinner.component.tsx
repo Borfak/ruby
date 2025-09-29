@@ -10,8 +10,7 @@ interface IProps {
 }
 
 // component
-export const LoadingSpinner: FC<Readonly<IProps>> = ({ size = 'md', color = 'primary', className }) => {
-
+const LoadingSpinner: FC<Readonly<IProps>> = ({ size = 'md', color = 'primary', className }) => {
   // return
   return (
     <div className={`flex items-center justify-center p-4 ${className || ''}`}>
@@ -19,3 +18,5 @@ export const LoadingSpinner: FC<Readonly<IProps>> = ({ size = 'md', color = 'pri
     </div>
   )
 }
+
+export default LoadingSpinner

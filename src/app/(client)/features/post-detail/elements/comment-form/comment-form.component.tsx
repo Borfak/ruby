@@ -21,7 +21,8 @@ interface IProps {
 }
 
 // component
-export const CommentForm: FC<Readonly<IProps>> = ({ postId }) => {
+const CommentForm: FC<Readonly<IProps>> = (props) => {
+  const { postId } = props
   const handleAppStore = useAppStore((state) => state.handleAppStore)
   const t = useTranslations('components.commentForm')
 
@@ -30,27 +31,26 @@ export const CommentForm: FC<Readonly<IProps>> = ({ postId }) => {
     handleSubmit,
     reset,
     formState: { errors, isSubmitting },
-  } = useForm<CommentFormData>()
+  } = useForm<CommentFormData>({
+    defaultValues: {
+      name: '',
+      email: '',
+      comment: '',
+    },
+  })
 
-  const onSubmit = async (data: CommentFormData) => {
-    try {
-      handleAppStore({ error: null })
+  const onSubmit = handleSubmit(async (_data) => {
+    handleAppStore({ error: null })
 
-      console.log('Submitting comment for post:', postId, data)
+    await new Promise((resolve) => setTimeout(resolve, 1000))
 
-      await new Promise((resolve) => setTimeout(resolve, 1000))
-
-      reset()
-
-      alert(t('submitSuccess'))
-    } catch (error) {
-      console.error('Error submitting comment:', error)
-    }
-  }
+    reset()
+    alert(t('submitSuccess'))
+  })
 
   // return
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className='space-y-4'>
+    <form onSubmit={onSubmit} className='space-y-4'>
       <div className='grid grid-cols-1 gap-4 md:grid-cols-2'>
         <Input
           {...register('name', {
@@ -65,6 +65,7 @@ export const CommentForm: FC<Readonly<IProps>> = ({ postId }) => {
           variant='bordered'
           isInvalid={!!errors.name}
           errorMessage={errors.name?.message}
+          isDisabled={isSubmitting}
         />
 
         <Input
@@ -81,6 +82,7 @@ export const CommentForm: FC<Readonly<IProps>> = ({ postId }) => {
           variant='bordered'
           isInvalid={!!errors.email}
           errorMessage={errors.email?.message}
+          isDisabled={isSubmitting}
         />
       </div>
 
@@ -98,6 +100,7 @@ export const CommentForm: FC<Readonly<IProps>> = ({ postId }) => {
         minRows={4}
         isInvalid={!!errors.comment}
         errorMessage={errors.comment?.message}
+        isDisabled={isSubmitting}
       />
 
       <div className='flex justify-end'>
@@ -107,6 +110,7 @@ export const CommentForm: FC<Readonly<IProps>> = ({ postId }) => {
           isLoading={isSubmitting}
           startContent={!isSubmitting && <Send size={16} />}
           className='min-w-32'
+          isDisabled={isSubmitting}
         >
           {isSubmitting ? t('submitting') : t('submitComment')}
         </Button>
@@ -114,3 +118,5 @@ export const CommentForm: FC<Readonly<IProps>> = ({ postId }) => {
     </form>
   )
 }
+
+export { CommentForm }

@@ -9,7 +9,6 @@ import { Avatar, Card, CardBody, CardHeader, Chip, Divider } from '@heroui/react
 import { CommentForm } from './elements/comment-form/comment-form.component'
 
 import { usePostBySlugQuery, useUserQuery } from '../../entities/api'
-import { ErrorMessage, LoadingSpinner } from '../../shared/ui'
 
 // interface
 interface IProps {
@@ -18,25 +17,12 @@ interface IProps {
 
 // component
 export const PostDetail: FC<Readonly<IProps>> = ({ slug }) => {
-  // slug not right
-  const { data: post, isLoading: isPostLoading, isError: isPostError, error: postError } = usePostBySlugQuery(slug)
-
+  const { data: post } = usePostBySlugQuery(slug)
   const { data: user, isLoading: isUserLoading } = useUserQuery(post?.userId || 0)
   const t = useTranslations('components.postDetail')
-  const tPost = useTranslations('pages.post')
   const tCommon = useTranslations('common')
-  //delete
-  if (isPostLoading) {
-    return <LoadingSpinner size='lg' />
-  }
 
-  if (isPostError) {
-    return <ErrorMessage message={postError?.message || tPost('failedToLoad')} title={tPost('postNotFound')} />
-  }
-
-  if (!post) {
-    return <ErrorMessage message={tPost('requestedPostNotFound')} title={tPost('postNotFound')} />
-  }
+  if (!post) return null
 
   //return
   return (

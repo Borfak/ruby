@@ -5,7 +5,9 @@ import { type FC } from 'react'
 
 import { usePostsQuery } from '../../entities/api'
 import { useAppStore } from '../../shared/store'
-import { ErrorMessage, LoadingSpinner, PostCard } from '../../shared/ui'
+import { ErrorMessage } from '../../shared/ui/error-message'
+import { LoadingSpinner } from '../../shared/ui/loading-spinner'
+import { PostCard } from '../../shared/ui/post-card'
 
 //interface
 interface IProps {

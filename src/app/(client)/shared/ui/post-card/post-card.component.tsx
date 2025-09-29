@@ -12,8 +12,7 @@ interface IProps {
 }
 
 // component
-export const PostCard: FC<Readonly<IProps>> = ({ post }) => {
-
+const PostCard: FC<Readonly<IProps>> = ({ post }) => {
   // return
   return (
     <Link href={`/posts/${post.id}`} className='block'>
@@ -34,3 +33,5 @@ export const PostCard: FC<Readonly<IProps>> = ({ post }) => {
     </Link>
   )
 }
+
+export default PostCard
