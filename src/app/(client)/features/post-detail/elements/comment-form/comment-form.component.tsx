@@ -7,8 +7,6 @@ import { useForm } from 'react-hook-form'
 
 import { Button, Input, Textarea } from '@heroui/react'
 
-import { useAppStore } from '../../../../shared/store'
-
 // interface
 interface CommentFormData {
   name: string
@@ -23,7 +21,6 @@ interface IProps {
 // component
 const CommentForm: FC<Readonly<IProps>> = (props) => {
   const { postId } = props
-  const handleAppStore = useAppStore((state) => state.handleAppStore)
   const t = useTranslations('components.commentForm')
 
   const {
@@ -40,8 +37,6 @@ const CommentForm: FC<Readonly<IProps>> = (props) => {
   })
 
   const onSubmit = handleSubmit(async (_data) => {
-    handleAppStore({ error: null })
-
     await new Promise((resolve) => setTimeout(resolve, 1000))
 
     reset()
