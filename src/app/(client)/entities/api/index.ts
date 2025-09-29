@@ -1,4 +1,4 @@
-export { postsQueryApi } from './posts/posts.api'
+export { getPostById, getPostBySlug, getPostsList, getUserById } from './posts/posts.api'
 export {
   postBySlugOptions,
   postsListOptions,
