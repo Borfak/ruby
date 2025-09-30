@@ -12,8 +12,9 @@ interface IProps {
 }
 
 // component
-const PostCard: FC<Readonly<IProps>> = ({ post }) => {
-  // return
+const PostCard: FC<Readonly<IProps>> = (props) => {
+  const { post } = props
+
   return (
     <Link href={`/posts/${post.id}`} className='block'>
       <Card isPressable isHoverable className='h-full transition-transform duration-200 hover:-translate-y-1'>

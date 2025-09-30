@@ -12,7 +12,9 @@ interface IProps {
   locale: Locale
 }
 
-const HomeModule: FC<Readonly<IProps>> = ({ locale }) => {
+const HomeModule: FC<Readonly<IProps>> = (props) => {
+  const { locale } = props
+
   return (
     <div className='flex flex-col gap-6'>
       <HeroBlockComponent />

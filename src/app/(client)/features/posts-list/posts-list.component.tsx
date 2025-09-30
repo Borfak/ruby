@@ -17,7 +17,8 @@ interface IProps {
 }
 
 //component
-const PostsList: FC<Readonly<IProps>> = ({ locale = 'en' }) => {
+const PostsList: FC<Readonly<IProps>> = (props) => {
+  const { locale = 'en' } = props
   const { data: posts, isLoading, isError, error } = useQuery(postsListOptions())
   const t = useTranslations('components.postsList')
   const searchQuery = useAppStore((state) => state.searchQuery)
