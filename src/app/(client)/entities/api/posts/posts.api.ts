@@ -20,4 +20,5 @@ export const getPostBySlug = (opt: QueryFunctionContext, { slug }: { slug: strin
   return apiGet<Post>(opt, `posts/${id}`)
 }
 
-export const getUserById = (opt: QueryFunctionContext, { userId }: { userId: number }) => apiGet<User>(opt, `users/${userId}`)
+export const getUserById = (opt: QueryFunctionContext, { userId }: { userId: number }) =>
+  apiGet<User>(opt, `users/${userId}`)

@@ -3,7 +3,9 @@
 import { useTranslations } from 'next-intl'
 import { type FC } from 'react'
 
-import { usePostsQuery } from '../../entities/api'
+import { useQuery } from '@tanstack/react-query'
+
+import { postsListOptions } from '../../entities/api'
 import { useAppStore } from '../../shared/store'
 import { ErrorMessage } from '../../shared/ui/error-message'
 import { LoadingSpinner } from '../../shared/ui/loading-spinner'
@@ -15,8 +17,8 @@ interface IProps {
 }
 
 //component
-export const PostsList: FC<Readonly<IProps>> = ({ locale = 'en' }) => {
-  const { data: posts, isLoading, isError, error } = usePostsQuery()
+const PostsList: FC<Readonly<IProps>> = ({ locale = 'en' }) => {
+  const { data: posts, isLoading, isError, error } = useQuery(postsListOptions())
   const t = useTranslations('components.postsList')
   const searchQuery = useAppStore((state) => state.searchQuery)
 
@@ -51,3 +53,5 @@ export const PostsList: FC<Readonly<IProps>> = ({ locale = 'en' }) => {
     </div>
   )
 }
+
+export default PostsList

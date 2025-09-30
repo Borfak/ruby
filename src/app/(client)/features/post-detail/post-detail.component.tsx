@@ -4,11 +4,12 @@ import { Calendar, User } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { type FC } from 'react'
 
-import { Avatar, Card, CardBody, CardHeader, Chip, Divider } from '@heroui/react'
+import { Avatar, Card, CardBody, CardHeader, Chip, Divider, Skeleton } from '@heroui/react'
+import { useQuery } from '@tanstack/react-query'
 
-import { CommentForm } from './elements/comment-form/comment-form.component'
+import { CommentForm } from './elements/comment-form'
 
-import { usePostBySlugQuery, useUserQuery } from '../../entities/api'
+import { postBySlugOptions, userByIdOptions } from '../../entities/api'
 
 // interface
 interface IProps {
@@ -16,15 +17,56 @@ interface IProps {
 }
 
 // component
-export const PostDetail: FC<Readonly<IProps>> = ({ slug }) => {
-  const { data: post } = usePostBySlugQuery(slug)
-  const { data: user, isLoading: isUserLoading } = useUserQuery(post?.userId || 0)
+const PostDetail: FC<Readonly<IProps>> = (props) => {
+  const { slug } = props
+  const { data: post, isLoading: isPostLoading } = useQuery(postBySlugOptions(slug))
+  const { data: user, isLoading: isUserLoading } = useQuery(userByIdOptions(post?.userId || 0))
   const t = useTranslations('components.postDetail')
   const tCommon = useTranslations('common')
 
-  if (!post) return null
+  if (isPostLoading) {
+    return (
+      <div className='mx-auto max-w-4xl space-y-6'>
+        <Card className='border-divider bg-background/80 border backdrop-blur'>
+          <CardHeader className='pb-2'>
+            <div className='flex flex-col space-y-4'>
+              <Skeleton className='h-8 w-3/5 rounded-lg md:h-10' />
+              <div className='flex items-center space-x-3'>
+                <Skeleton className='h-8 w-8 rounded-full' />
+                <div className='flex flex-col space-y-2'>
+                  <Skeleton className='h-4 w-24 rounded' />
+                  <Skeleton className='h-3 w-16 rounded' />
+                </div>
+                <Skeleton className='h-6 w-20 rounded-full' />
+              </div>
+            </div>
+          </CardHeader>
+          <Divider />
+          <CardBody className='pt-6'>
+            <div className='space-y-3'>
+              <Skeleton className='h-4 w-full rounded' />
+              <Skeleton className='h-4 w-4/5 rounded' />
+              <Skeleton className='h-4 w-3/5 rounded' />
+            </div>
+          </CardBody>
+        </Card>
+      </div>
+    )
+  }
 
-  //return
+  if (!post) {
+    return (
+      <div className='mx-auto max-w-4xl'>
+        <Card className='border-danger bg-danger-50'>
+          <CardBody className='text-center'>
+            <p className='text-danger'>{tCommon('postNotFound')}</p>
+          </CardBody>
+        </Card>
+      </div>
+    )
+  }
+
+  // return
   return (
     <div className='mx-auto max-w-4xl space-y-6'>
       <Card className='border-divider bg-background/80 border backdrop-blur'>
@@ -32,13 +74,15 @@ export const PostDetail: FC<Readonly<IProps>> = ({ slug }) => {
           <div className='flex flex-col space-y-4'>
             <h1 className='text-foreground text-2xl font-bold md:text-3xl'>{post.title}</h1>
 
-            <div className='flex items-center space-x-3'>
-              <Avatar icon={<User />} name={user?.name || 'Loading...'} size='sm' className='bg-primary' />
-              <div className='flex flex-col'>
-                <span className='text-sm font-medium'>
-                  {isUserLoading ? tCommon('loading') : user?.name || t('unknownAuthor')}
-                </span>
-                <span className='text-foreground-400 text-xs'>@{user?.username || 'username'}</span>
+            <div className='flex items-center justify-between'>
+              <div className='flex items-center space-x-3'>
+                <Avatar icon={<User />} name={user?.name || 'Loading...'} size='sm' className='bg-primary' />
+                <div className='flex flex-col'>
+                  <span className='text-sm font-medium'>
+                    {isUserLoading ? tCommon('loading') : user?.name || t('unknownAuthor')}
+                  </span>
+                  <span className='text-foreground-400 text-xs'>@{user?.username || 'username'}</span>
+                </div>
               </div>
               <Chip size='sm' variant='flat' color='primary' startContent={<Calendar size={12} />}>
                 Post #{post.id}
@@ -84,3 +128,5 @@ export const PostDetail: FC<Readonly<IProps>> = ({ slug }) => {
     </div>
   )
 }
+
+export default PostDetail 

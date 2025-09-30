@@ -1,4 +1,4 @@
-import { queryOptions, useQuery } from '@tanstack/react-query'
+import { queryOptions } from '@tanstack/react-query'
 
 import { getPostById, getPostBySlug, getPostsList, getUserById } from './posts.api'
 
@@ -29,20 +29,3 @@ export const userByIdOptions = (userId: number) =>
     queryFn: (opt) => getUserById(opt, { userId }),
     enabled: !!userId && userId > 0,
   })
-
-// hooks
-export const usePostsQuery = () => {
-  return useQuery(postsListOptions())
-}
-
-export const usePostQuery = (id: number) => {
-  return useQuery(postByIdOptions(id))
-}
-
-export const usePostBySlugQuery = (slug: string) => {
-  return useQuery(postBySlugOptions(slug))
-}
-
-export const useUserQuery = (userId: number) => {
-  return useQuery(userByIdOptions(userId))
-}

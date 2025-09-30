@@ -114,4 +114,4 @@ const CommentForm: FC<Readonly<IProps>> = (props) => {
   )
 }
 
-export { CommentForm }
+export default CommentForm 
