@@ -19,8 +19,7 @@ interface IProps {
 }
 
 // component
-const CommentForm: FC<Readonly<IProps>> = (props) => {
-  const { postId } = props
+const CommentForm: FC<Readonly<IProps>> = () => {
   const t = useTranslations('components.commentForm')
 
   const {
@@ -114,4 +113,4 @@ const CommentForm: FC<Readonly<IProps>> = (props) => {
   )
 }
 
-export default CommentForm 
+export default CommentForm

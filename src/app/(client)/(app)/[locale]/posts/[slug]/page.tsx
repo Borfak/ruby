@@ -35,8 +35,8 @@ async function prefetchPostDetail(slug: string) {
 }
 
 // component
-const PostPage: FC<Readonly<IProps>> = async ({ params }) => {
-  const { locale, slug } = await params
+const PostPage: FC<Readonly<IProps>> = async (props) => {
+  const { locale, slug } = await props.params
   const t = await getTranslations({ locale, namespace: 'pages.post' })
 
   const dehydratedState = await prefetchPostDetail(slug)

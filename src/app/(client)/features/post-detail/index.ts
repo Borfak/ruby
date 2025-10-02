@@ -1,1 +1,1 @@
-export { PostDetail } from './post-detail.component'
+export { default as PostDetail } from './post-detail.component'
