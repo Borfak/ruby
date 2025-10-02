@@ -6,6 +6,7 @@ import { Card, CardBody, CardFooter, CardHeader, Chip } from '@heroui/react'
 
 import type { Post } from '@/app/(client)/entities/models'
 import { Link } from '@/pkg/libraries/locale'
+import { useMixpanel } from '@/pkg/libraries/mixpanel'
 
 // interface
 interface IProps {
@@ -17,10 +18,20 @@ interface IProps {
 // component
 const PostCard: FC<Readonly<IProps>> = (props) => {
   const { post, isNewDesign = false } = props
+  const mixpanel = useMixpanel()
+
+  const handlePostClick = () => {
+    mixpanel.track('Post Card Clicked', {
+      post_id: post.id,
+      post_title: post.title,
+      user_id: post.userId,
+      design_variant: isNewDesign ? 'new' : 'old',
+    })
+  }
 
   if (isNewDesign) {
     return (
-      <Link href={`/posts/${post.id}`} className='block'>
+      <Link href={`/posts/${post.id}`} className='block' onClick={handlePostClick}>
         <Card
           isPressable
           isHoverable
@@ -51,7 +62,7 @@ const PostCard: FC<Readonly<IProps>> = (props) => {
   }
 
   return (
-    <Link href={`/posts/${post.id}`} className='block'>
+    <Link href={`/posts/${post.id}`} className='block' onClick={handlePostClick}>
       <Card isPressable isHoverable className='h-full transition-transform duration-200 hover:-translate-y-1'>
         <CardHeader className='pb-0'>
           <h3 className='text-foreground line-clamp-2 text-lg font-semibold'>{post.title}</h3>
