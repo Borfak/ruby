@@ -14,11 +14,12 @@ import { PostCard } from '../../shared/ui/post-card'
 //interface
 interface IProps {
   locale?: string
+  isNewPostCardDesignEnabled: boolean
 }
 
 //component
 const PostsList: FC<Readonly<IProps>> = (props) => {
-  const { locale = 'en' } = props
+  const { locale = 'en', isNewPostCardDesignEnabled } = props
   const { data: posts, isLoading, isError, error } = useQuery(postsListOptions())
   const t = useTranslations('components.postsList')
   const searchQuery = useAppStore((state) => state.searchQuery)
@@ -49,7 +50,7 @@ const PostsList: FC<Readonly<IProps>> = (props) => {
   return (
     <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
       {filtered.map((post) => (
-        <PostCard key={post.id} post={post} locale={locale} />
+        <PostCard key={post.id} post={post} locale={locale} isNewDesign={isNewPostCardDesignEnabled} />
       ))}
     </div>
   )

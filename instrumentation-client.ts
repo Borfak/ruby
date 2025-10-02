@@ -14,13 +14,11 @@ Sentry.init({
 
   tracesSampleRate: process.env.NODE_ENV === 'production' ? 0.1 : 1.0,
 
-  enableLogs: false,
-
   replaysSessionSampleRate: process.env.NODE_ENV === 'production' ? 0.1 : 1.0,
 
   replaysOnErrorSampleRate: 1.0,
 
-  debug: process.env.NODE_ENV === 'development',
+  debug: false,
 
   sendDefaultPii: true,
 })

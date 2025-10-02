@@ -10,15 +10,16 @@ const HeroBlockComponent = dynamic(() => import('../../features/block').then((m)
 
 interface IProps {
   locale: Locale
+  isNewPostCardDesignEnabled: boolean
 }
 
 const HomeModule: FC<Readonly<IProps>> = (props) => {
-  const { locale } = props
+  const { locale, isNewPostCardDesignEnabled } = props
 
   return (
     <div className='flex flex-col gap-6'>
       <HeroBlockComponent />
-      <PostsList locale={locale} />
+      <PostsList locale={locale} isNewPostCardDesignEnabled={isNewPostCardDesignEnabled} />
     </div>
   )
 }

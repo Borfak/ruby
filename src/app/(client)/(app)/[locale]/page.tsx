@@ -1,3 +1,4 @@
+import { cookies } from 'next/headers'
 import { Locale } from 'next-intl'
 import { setRequestLocale } from 'next-intl/server'
 import { type FC } from 'react'
@@ -5,6 +6,7 @@ import { type FC } from 'react'
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
 
 import { postsListOptions } from '@/client/entities/api'
+import { getFeatureValue } from '@/pkg/libraries/growthbook/adapter'
 import { getQueryClient } from '@/pkg/libraries/rest-api/service'
 
 import { HomeModule } from '../../modules/home/index'
@@ -28,10 +30,16 @@ const HomePage: FC<Readonly<IProps>> = async (props) => {
 
   const dehydratedState = dehydrate(queryClient)
 
+  // evaluate feature via GrowthBook
+  const cookieStore = await cookies()
+  const userId = cookieStore.get('user_id')?.value || 'anonymous'
+
+  const isNewPostCardDesignEnabled = await getFeatureValue<boolean>('new_post_card_design', false, { id: userId })
+
   // return
   return (
     <HydrationBoundary state={dehydratedState}>
-      <HomeModule locale={locale} />
+      <HomeModule locale={locale} isNewPostCardDesignEnabled={isNewPostCardDesignEnabled} />
     </HydrationBoundary>
   )
 }

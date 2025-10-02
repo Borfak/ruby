@@ -8,7 +8,5 @@ Sentry.init({
 
   tracesSampleRate: envServer.NODE_ENV === 'production' ? 0.1 : 1.0,
 
-  enableLogs: true,
-
-  debug: envServer.NODE_ENV === 'development',
+  debug: false,
 })
