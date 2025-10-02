@@ -92,9 +92,13 @@ const PostDetail: FC<Readonly<IProps>> = (props) => {
         </CardHeader>
 
         <Divider />
-    <button onClick={() => {throw new Error('test error works')}}>
-    Error
-    </button>
+        <button
+          onClick={() => {
+            throw new Error('test error works')
+          }}
+        >
+          Error
+        </button>
         <CardBody className='pt-6'>
           <div className='prose max-w-none'>
             <p className='text-foreground-700 text-base leading-relaxed'>{post.body}</p>
