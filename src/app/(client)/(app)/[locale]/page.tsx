@@ -6,10 +6,10 @@ import { type FC } from 'react'
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
 
 import { postsListOptions } from '@/client/entities/api'
+import { getFeatureValue } from '@/pkg/integrations/growthbook'
 import { getQueryClient } from '@/pkg/libraries/rest-api/service'
 
 import { HomeModule } from '../../modules/home/index'
-import { getFeatureValue } from '@/pkg/integrations/growthbook'
 
 // cache
 export const revalidate = 30

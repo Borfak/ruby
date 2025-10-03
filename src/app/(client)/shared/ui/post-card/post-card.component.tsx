@@ -5,8 +5,8 @@ import { type FC } from 'react'
 import { Card, CardBody, CardFooter, CardHeader, Chip } from '@heroui/react'
 
 import type { Post } from '@/app/(client)/entities/models'
-import { Link } from '@/pkg/libraries/locale'
 import { useMixpanel } from '@/pkg/integrations/mixpanel'
+import { Link } from '@/pkg/libraries/locale'
 
 // interface
 interface IProps {

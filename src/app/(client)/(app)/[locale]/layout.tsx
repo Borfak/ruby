@@ -4,8 +4,8 @@ import { hasLocale, Locale, NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
 import { type FC, type ReactNode } from 'react'
 
-import { routing } from '@/pkg/libraries/locale'
 import { MixpanelInit } from '@/pkg/integrations/mixpanel'
+import { routing } from '@/pkg/libraries/locale'
 import RestApiProvider from '@/pkg/libraries/rest-api/rest-api.provider'
 import { UiProvider } from '@/pkg/libraries/ui'
 

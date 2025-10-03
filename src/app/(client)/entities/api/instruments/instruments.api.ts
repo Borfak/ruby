@@ -1,4 +1,5 @@
 import { getSupabaseServerClient } from '@/pkg/integrations/supabase/supabase.server'
+
 import { type Instrument } from '../../models'
 
 export async function fetchInstruments(): Promise<Instrument[]> {
@@ -11,4 +12,3 @@ export async function fetchInstruments(): Promise<Instrument[]> {
 
   return data ?? []
 }
-

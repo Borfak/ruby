@@ -15,8 +15,7 @@ export const MixpanelInit = ({ userId, userTraits }: IProps) => {
   const pathname = usePathname()
 
   useEffect(() => {
-
- mixpanelClient.init()
+    mixpanelClient.init()
   }, [])
 
   useEffect(() => {

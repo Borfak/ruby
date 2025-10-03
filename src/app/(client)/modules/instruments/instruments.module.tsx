@@ -23,5 +23,3 @@ const InstrumentsModule: FC<Readonly<IProps>> = ({ instruments }) => {
 }
 
 export default InstrumentsModule
-
-
