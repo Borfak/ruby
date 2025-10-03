@@ -2,22 +2,37 @@ import { Locale } from 'next-intl'
 import { setRequestLocale } from 'next-intl/server'
 import type { FC } from 'react'
 
-import { fetchInstruments } from '@/client/entities/api/instruments/instruments.api'
-import InstrumentsModule from '@/client/modules/instruments/instruments.module'
+import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
 
+import { instrumentsListOptions } from '@/client/entities/api'
+import InstrumentsModule from '@/client/modules/instruments/instruments.module'
+import { getQueryClient } from '@/pkg/libraries/rest-api/service'
+
+// cache
 export const revalidate = 30
 
+// interface
 interface IProps {
   params: Promise<{ locale: Locale }>
 }
 
+// component
 const InstrumentsPage: FC<Readonly<IProps>> = async (props) => {
   const { locale } = await props.params
   setRequestLocale(locale)
 
-  const instruments = await fetchInstruments()
+  // prefetch
+  const queryClient = getQueryClient()
+  await queryClient.prefetchQuery(instrumentsListOptions())
 
-  return <InstrumentsModule instruments={instruments} />
+  const dehydratedState = dehydrate(queryClient)
+
+  // return
+  return (
+    <HydrationBoundary state={dehydratedState}>
+      <InstrumentsModule />
+    </HydrationBoundary>
+  )
 }
 
 export default InstrumentsPage

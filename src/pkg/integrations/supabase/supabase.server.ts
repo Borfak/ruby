@@ -1,14 +1,13 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js'
 
-import { envServer } from '@/config/env/env.server'
+import { envClient } from '@/config/env/env.client'
 
-// supabase singleton instance
+// supabase singleton instance for server-side operations
 let supabaseInstance: SupabaseClient | null = null
 
-// get or create supabase client
 export function getSupabaseServerClient(): SupabaseClient {
   if (!supabaseInstance) {
-    supabaseInstance = createClient(envServer.SUPABASE_URL, envServer.SUPABASE_ANON_KEY)
+    supabaseInstance = createClient(envClient.NEXT_PUBLIC_SUPABASE_URL, envClient.NEXT_PUBLIC_SUPABASE_ANON_KEY)
   }
   return supabaseInstance
 }

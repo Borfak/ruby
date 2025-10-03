@@ -42,6 +42,9 @@ export const mixpanelClient = {
   // track page view
   trackPageView: (pageName?: string, properties?: Record<string, any>) => {
     if (!isInitialized) return
-    mixpanel.track_pageview(properties)
+    mixpanel.track('Page View', {
+      page: pageName ?? window.location.pathname,
+      ...properties,
+    })
   },
 }

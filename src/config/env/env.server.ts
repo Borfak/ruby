@@ -9,15 +9,11 @@ export const envServer = createEnv({
     SENTRY_AUTH_TOKEN: z.string().optional(),
     GROWTHBOOK_CLIENT_KEY: z.string().min(1, { message: 'GROWTHBOOK_CLIENT_KEY is required' }),
     GROWTHBOOK_API_HOST: z.string().optional(),
-    SUPABASE_URL: z.string().min(1, { message: 'SUPABASE_URL is required' }),
-    SUPABASE_ANON_KEY: z.string().min(1, { message: 'SUPABASE_ANON_KEY is required' }),
   },
   runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
     SENTRY_AUTH_TOKEN: process.env.SENTRY_AUTH_TOKEN,
     GROWTHBOOK_CLIENT_KEY: process.env.GROWTHBOOK_CLIENT_KEY,
     GROWTHBOOK_API_HOST: process.env.GROWTHBOOK_API_HOST,
-    SUPABASE_URL: process.env.SUPABASE_URL,
-    SUPABASE_ANON_KEY: process.env.SUPABASE_ANON_KEY,
   },
 })

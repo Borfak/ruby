@@ -2,15 +2,23 @@
 
 import type { FC } from 'react'
 
-import { type Instrument } from '../../entities/models'
+import { useSuspenseQuery } from '@tanstack/react-query'
+
+import { instrumentsListOptions } from '../../entities/api'
+import { ErrorMessage } from '../../shared/ui/error-message'
 
 // interface
-interface IProps {
-  instruments: Instrument[]
-}
+interface IProps {}
 
 // component
-const InstrumentsModule: FC<Readonly<IProps>> = ({ instruments }) => {
+const InstrumentsModule: FC<Readonly<IProps>> = () => {
+  const { data: instruments, error } = useSuspenseQuery(instrumentsListOptions())
+
+  // error state
+  if (error) {
+    return <ErrorMessage message='Failed to load instruments' />
+  }
+
   // return
   return (
     <div className='flex flex-col gap-4'>
