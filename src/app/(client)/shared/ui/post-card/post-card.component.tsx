@@ -6,7 +6,7 @@ import { Card, CardBody, CardFooter, CardHeader, Chip } from '@heroui/react'
 
 import type { Post } from '@/app/(client)/entities/models'
 import { Link } from '@/pkg/libraries/locale'
-import { useMixpanel } from '@/pkg/libraries/mixpanel'
+import { useMixpanel } from '@/pkg/integrations/mixpanel'
 
 // interface
 interface IProps {

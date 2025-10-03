@@ -15,6 +15,8 @@
         "@growthbook/growthbook": "^1.6.1",
         "@heroui/react": "^2.8.4",
         "@sentry/nextjs": "^10",
+        "@supabase/ssr": "^0.7.0",
+        "@supabase/supabase-js": "^2.58.0",
         "@t3-oss/env-nextjs": "^0.13.8",
         "@tanstack/react-query": "^5.89.0",
         "@tanstack/react-query-devtools": "^5.89.0",
@@ -29,7 +31,6 @@
         "react": "19.1.0",
         "react-dom": "19.1.0",
         "react-hook-form": "^7.62.0",
-        "server-only": "^0.0.1",
         "zod": "^4.1.11",
         "zustand": "^5.0.8"
     },

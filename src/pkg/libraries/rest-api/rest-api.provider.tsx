@@ -3,9 +3,6 @@
 import type { FC, ReactNode } from 'react'
 
 import { QueryClientProvider } from '@tanstack/react-query'
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-
-import { envServer } from '@/config/env/env.server'
 
 import { getQueryClient } from './service'
 
@@ -21,13 +18,7 @@ const RestApiProvider: FC<Readonly<IProps>> = (props) => {
   const queryClient = getQueryClient()
 
   // return
-  return (
-    <QueryClientProvider client={queryClient}>
-      {children}
-
-      {envServer.NODE_ENV === 'development' && <ReactQueryDevtools initialIsOpen={false} />}
-    </QueryClientProvider>
-  )
+  return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
 }
 
 export default RestApiProvider

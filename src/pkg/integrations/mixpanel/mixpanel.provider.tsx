@@ -16,11 +16,13 @@ export const MixpanelProvider: FC<Readonly<IProps>> = (props) => {
 
   useEffect(() => {
     mixpanelClient.init()
+  }, [])
 
+  useEffect(() => {
     if (userId) {
       mixpanelClient.identify(userId, userTraits)
     }
-  }, [])
+  }, [userId, userTraits])
 
   return <>{children}</>
 }

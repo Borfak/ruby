@@ -1,0 +1,1 @@
+export { getFeatureValue } from './adapter'

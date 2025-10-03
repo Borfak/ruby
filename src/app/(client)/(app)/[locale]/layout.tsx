@@ -5,7 +5,7 @@ import { getMessages } from 'next-intl/server'
 import { type FC, type ReactNode } from 'react'
 
 import { routing } from '@/pkg/libraries/locale'
-import { MixpanelProvider } from '@/pkg/libraries/mixpanel'
+import { MixpanelInit } from '@/pkg/integrations/mixpanel'
 import RestApiProvider from '@/pkg/libraries/rest-api/rest-api.provider'
 import { UiProvider } from '@/pkg/libraries/ui'
 
@@ -41,13 +41,12 @@ const LocaleLayout: FC<Readonly<IProps>> = async (props) => {
   return (
     <html lang={locale}>
       <body suppressHydrationWarning>
+        <MixpanelInit userId={userId} />
         <NextIntlClientProvider messages={messages}>
           <UiProvider locale={locale}>
-            <MixpanelProvider userId={userId}>
-              <RestApiProvider>
-                <MainLayoutModule>{children}</MainLayoutModule>
-              </RestApiProvider>
-            </MixpanelProvider>
+            <RestApiProvider>
+              <MainLayoutModule>{children}</MainLayoutModule>
+            </RestApiProvider>
           </UiProvider>
         </NextIntlClientProvider>
       </body>

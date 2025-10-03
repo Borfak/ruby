@@ -20,7 +20,6 @@ export const mixpanelClient = {
       persistence: 'localStorage',
       autocapture: true,
     })
-
     isInitialized = true
   },
 
