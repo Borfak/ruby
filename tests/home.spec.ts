@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test'
 
+// Home page
 test.describe('Home Page', () => {
   test('should load the home page successfully', async ({ page }) => {
     await page.goto('/en')
@@ -12,6 +13,7 @@ test.describe('Home Page', () => {
     expect(bodyContent).toBeTruthy()
   })
 
+  // Header and Footer display
   test('should display header and footer', async ({ page }) => {
     await page.goto('/en')
     await page.waitForLoadState('networkidle')
@@ -23,6 +25,7 @@ test.describe('Home Page', () => {
     await expect(footer).toBeVisible()
   })
 
+  // Instruments page
   test('should navigate to instruments page', async ({ page }) => {
     await page.goto('/en')
     await page.waitForLoadState('networkidle')

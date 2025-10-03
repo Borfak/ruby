@@ -1,5 +1,6 @@
 'use client'
 
+// imports
 import { Send } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { type FC } from 'react'
@@ -22,6 +23,7 @@ interface IProps {
 const CommentForm: FC<Readonly<IProps>> = () => {
   const t = useTranslations('components.commentForm')
 
+  // form setup
   const {
     register,
     handleSubmit,
@@ -35,14 +37,16 @@ const CommentForm: FC<Readonly<IProps>> = () => {
     },
   })
 
+  // handle form submission
   const onSubmit = handleSubmit(async (_data) => {
+    // simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1000))
 
     reset()
     alert(t('submitSuccess'))
   })
 
-  // return
+  // render form
   return (
     <form onSubmit={onSubmit} className='space-y-4'>
       <div className='grid grid-cols-1 gap-4 md:grid-cols-2'>

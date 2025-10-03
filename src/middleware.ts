@@ -3,7 +3,7 @@ import createMiddleware from 'next-intl/middleware'
 
 import { routing } from './pkg/libraries/locale'
 
-// Generate a simple unique ID
+// generate a simple unique ID
 function generateUserId(): string {
   return `user_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`
 }

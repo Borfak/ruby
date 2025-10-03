@@ -1,5 +1,6 @@
 import { defineConfig, devices } from '@playwright/test'
 
+// playwright config
 export default defineConfig({
   testDir: './tests',
   fullyParallel: true,

@@ -11,13 +11,13 @@ import { ErrorMessage } from '../../shared/ui/error-message'
 import { LoadingSpinner } from '../../shared/ui/loading-spinner'
 import { PostCard } from '../../shared/ui/post-card'
 
-//interface
+// interface
 interface IProps {
   locale?: string
   isNewPostCardDesignEnabled: boolean
 }
 
-//component
+// component
 const PostsList: FC<Readonly<IProps>> = (props) => {
   const { locale = 'en', isNewPostCardDesignEnabled } = props
   const { data: posts, isLoading, isError, error } = useQuery(postsListOptions())
@@ -32,12 +32,14 @@ const PostsList: FC<Readonly<IProps>> = (props) => {
     return <ErrorMessage message={error?.message || t('failedToLoadPosts')} title={t('unableToLoadPosts')} />
   }
 
+  // filter posts by search query
   const normalized = (searchQuery || '').trim().toLowerCase()
   const postsArray = Array.isArray(posts) ? posts : []
   const filtered = postsArray.filter(
     (p) => !normalized || p.title.toLowerCase().includes(normalized) || p.body.toLowerCase().includes(normalized),
   )
 
+  // empty state
   if (!filtered || filtered.length === 0) {
     return (
       <div className='py-8 text-center'>

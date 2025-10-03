@@ -2,6 +2,7 @@ import { GrowthBook } from '@growthbook/growthbook'
 
 import { envServer } from '@/config/env/env.server'
 
+// growthbook instance
 const gb = new GrowthBook({
   apiHost: envServer.GROWTHBOOK_API_HOST,
   clientKey: envServer.GROWTHBOOK_CLIENT_KEY,
@@ -16,11 +17,13 @@ async function ensureInitialized() {
   }
 }
 
+// get feature flag value
 export async function getFeatureValue<T>(key: string, defaultValue: T, attributes: Record<string, any>): Promise<T> {
   await ensureInitialized()
 
   gb.setAttributes(attributes)
 
+  // evaluate feature
   const result = gb.evalFeature<T>(key)
 
   return result?.value ?? defaultValue

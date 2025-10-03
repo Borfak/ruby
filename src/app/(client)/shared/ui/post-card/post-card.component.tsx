@@ -20,6 +20,7 @@ const PostCard: FC<Readonly<IProps>> = (props) => {
   const { post, isNewDesign = false } = props
   const mixpanel = useMixpanel()
 
+  // track post click event
   const handlePostClick = () => {
     mixpanel.track('Post Card Clicked', {
       post_id: post.id,
@@ -29,6 +30,7 @@ const PostCard: FC<Readonly<IProps>> = (props) => {
     })
   }
 
+  // render new design variant
   if (isNewDesign) {
     return (
       <Link href={`/posts/${post.id}`} className='block' onClick={handlePostClick}>
@@ -61,6 +63,7 @@ const PostCard: FC<Readonly<IProps>> = (props) => {
     )
   }
 
+  // render old design variant
   return (
     <Link href={`/posts/${post.id}`} className='block' onClick={handlePostClick}>
       <Card isPressable isHoverable className='h-full transition-transform duration-200 hover:-translate-y-1'>

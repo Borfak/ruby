@@ -11,6 +11,8 @@ interface IProps {}
 // component
 const HeroBlockComponent: FC<Readonly<IProps>> = () => {
   const t = useTranslations('pages.home')
+
+  // return
   return (
     <Card className='border-divider from-primary/5 via-background to-secondary/5 mb-8 overflow-hidden border bg-gradient-to-br'>
       <CardBody className='py-12 text-center'>

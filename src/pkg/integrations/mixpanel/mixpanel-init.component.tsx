@@ -6,11 +6,13 @@ import { useEffect } from 'react'
 
 import { mixpanelClient } from './mixpanel.client'
 
+// interface
 interface IProps {
   userId?: string
   userTraits?: Record<string, unknown>
 }
 
+// component
 export const MixpanelInit = ({ userId, userTraits }: IProps) => {
   const pathname = usePathname()
 

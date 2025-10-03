@@ -9,7 +9,7 @@ interface IProps {
   variant?: 'main' | 'section'
 }
 
-//component
+// component
 const ContainerComponent: FC<Readonly<IProps>> = (props) => {
   const { children, className = '', variant = 'main' } = props
 

@@ -4,11 +4,14 @@ import type { FC } from 'react'
 
 import { type Instrument } from '../../entities/models'
 
+// interface
 interface IProps {
   instruments: Instrument[]
 }
 
+// component
 const InstrumentsModule: FC<Readonly<IProps>> = ({ instruments }) => {
+  // return
   return (
     <div className='flex flex-col gap-4'>
       <h1 className='text-2xl font-semibold'>Instruments</h1>

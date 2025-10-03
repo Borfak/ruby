@@ -15,6 +15,7 @@ interface IProps {
 const ErrorMessage: FC<Readonly<IProps>> = (props) => {
   const { message, title = 'Error', variant = 'faded', color = 'danger' } = props
 
+  // return
   return (
     <Alert
       color={color}

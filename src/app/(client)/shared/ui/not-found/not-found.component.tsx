@@ -20,7 +20,6 @@ const NotFoundComponent: FC<Readonly<IProps>> = (props) => {
   const { title, description, buttonText } = props
 
   const t = useTranslations('pages.notFound')
-
   const router = useRouter()
 
   // return
