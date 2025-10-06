@@ -4,7 +4,6 @@ import { hasLocale, Locale, NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
 import { type FC, type ReactNode } from 'react'
 
-import { MixpanelInit } from '@/pkg/integrations/mixpanel'
 import { routing } from '@/pkg/libraries/locale'
 import RestApiProvider from '@/pkg/libraries/rest-api/rest-api.provider'
 import { UiProvider } from '@/pkg/libraries/ui'
@@ -35,13 +34,12 @@ const LocaleLayout: FC<Readonly<IProps>> = async (props) => {
 
   // Get userId for Mixpanel tracking
   const cookieStore = await cookies()
-  const userId = cookieStore.get('user_id')?.value
+  const _userId = cookieStore.get('user_id')?.value
 
   // return
   return (
     <html lang={locale}>
       <body suppressHydrationWarning>
-        <MixpanelInit userId={userId} />
         <NextIntlClientProvider messages={messages}>
           <UiProvider locale={locale}>
             <RestApiProvider>

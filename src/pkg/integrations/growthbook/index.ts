@@ -1,1 +1,1 @@
-export { getFeatureValue } from './adapter'
+export { getFeatureValue } from './growthbook.adapter'

@@ -5,7 +5,7 @@ import { type FC } from 'react'
 import { Card, CardBody, CardFooter, CardHeader, Chip } from '@heroui/react'
 
 import type { Post } from '@/app/(client)/entities/models'
-import { useMixpanel } from '@/pkg/integrations/mixpanel'
+import { trackEvent } from '@/pkg/integrations/mixpanel'
 import { Link } from '@/pkg/libraries/locale'
 
 // interface
@@ -18,11 +18,10 @@ interface IProps {
 // component
 const PostCard: FC<Readonly<IProps>> = (props) => {
   const { post, isNewDesign = false } = props
-  const mixpanel = useMixpanel()
 
   // track post click event
   const handlePostClick = () => {
-    mixpanel.track('Post Card Clicked', {
+    trackEvent('Post Card Clicked', {
       post_id: post.id,
       post_title: post.title,
       user_id: post.userId,

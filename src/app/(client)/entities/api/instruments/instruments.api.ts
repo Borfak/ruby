@@ -1,20 +1,16 @@
 import type { QueryFunctionContext } from '@tanstack/react-query'
 
-import { supabaseFetcher } from '@/pkg/libraries/rest-api/fetcher/supabase.fetcher'
+import { supabase } from '@/pkg/integrations/supabase'
 
 import type { Instrument } from '../../models'
 
-// GET request helper for Supabase
-const apiGet = async <T>(opt: QueryFunctionContext, url: string): Promise<T> => {
-  return supabaseFetcher
-    .get(url, {
-      signal: opt.signal,
-      cache: 'force-cache',
-      next: { revalidate: 30 },
-    })
-    .json()
-}
-
 // api
-export const getInstrumentsList = (opt: QueryFunctionContext) =>
-  apiGet<Instrument[]>(opt, 'instruments?select=id,name&order=id.asc')
+export const getInstrumentsList = async (opt: QueryFunctionContext): Promise<Instrument[]> => {
+  const { data, error } = await supabase().from('instruments').select('id,name').order('id', { ascending: true })
+
+  if (error) {
+    throw new Error(`Failed to fetch instruments: ${error.message}`)
+  }
+
+  return data || []
+}

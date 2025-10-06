@@ -25,7 +25,9 @@ const InstrumentsModule: FC<Readonly<IProps>> = () => {
       <h1 className='text-2xl font-semibold'>Instruments</h1>
       <ul className='list-disc pl-6'>
         {instruments.map((instrument) => (
-          <li key={instrument.id}>{instrument.name}</li>
+          <li key={instrument.id}>
+            {instrument.id} - {instrument.name}
+          </li>
         ))}
       </ul>
       {instruments.length === 0 && <p className='text-default-500'>No instruments found.</p>}
