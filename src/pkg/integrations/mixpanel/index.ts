@@ -1,1 +1,1 @@
-export { trackEvent, identifyUser, trackPageView } from './mixpanel.client'
+export { identifyUser, trackEvent, trackPageView } from './mixpanel.client'

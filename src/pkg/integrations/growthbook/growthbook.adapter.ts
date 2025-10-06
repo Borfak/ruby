@@ -18,7 +18,11 @@ async function ensureInitialized() {
 }
 
 // get feature flag value
-export async function getFeatureValue<T>(key: string, defaultValue: T, attributes: Record<string, any>): Promise<T> {
+export async function getFeatureValue<T>(
+  key: string,
+  defaultValue: T,
+  attributes: Record<string, unknown>,
+): Promise<T> {
   await ensureInitialized()
 
   gb.setAttributes(attributes)

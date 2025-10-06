@@ -2,15 +2,10 @@
 
 import { Search, Sparkles } from 'lucide-react'
 import { useTranslations } from 'next-intl'
-import { useTheme } from 'next-themes'
 import type { FC } from 'react'
 
 import {
   Button,
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownTrigger,
   Input,
   Navbar,
   NavbarBrand,
@@ -34,7 +29,6 @@ const Header: FC<Readonly<IProps>> = () => {
 
   const searchQuery = useAppStore((state) => state.searchQuery)
   const handleAppStore = useAppStore((state) => state.handleAppStore)
-  const { theme, setTheme, resolvedTheme } = useTheme()
 
   // return
   return (
@@ -63,30 +57,6 @@ const Header: FC<Readonly<IProps>> = () => {
             startContent={<Search size={16} className='text-foreground-400' />}
             variant='bordered'
           />
-        </NavbarItem>
-        <NavbarItem>
-          <Dropdown placement='bottom-end'>
-            <DropdownTrigger>
-              <Button variant='flat' size='sm'>
-                {resolvedTheme === 'dark' ? 'Dark' : resolvedTheme === 'light' ? 'Light' : 'System'}
-              </Button>
-            </DropdownTrigger>
-            <DropdownMenu
-              aria-label='Theme selector'
-              selectedKeys={new Set([theme || 'system'])}
-              selectionMode='single'
-            >
-              <DropdownItem key='light' onPress={() => setTheme('light')}>
-                Light
-              </DropdownItem>
-              <DropdownItem key='dark' onPress={() => setTheme('dark')}>
-                Dark
-              </DropdownItem>
-              <DropdownItem key='system' onPress={() => setTheme('system')}>
-                System
-              </DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
         </NavbarItem>
         <NavbarItem className='sm:hidden'>
           <Button isIconOnly variant='light' aria-label={t('searchAria')}>

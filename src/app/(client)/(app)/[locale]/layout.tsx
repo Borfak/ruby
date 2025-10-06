@@ -1,4 +1,3 @@
-import { cookies } from 'next/headers'
 import { notFound } from 'next/navigation'
 import { hasLocale, Locale, NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
@@ -32,14 +31,10 @@ const LocaleLayout: FC<Readonly<IProps>> = async (props) => {
   }
   const messages = await getMessages()
 
-  // Get userId for Mixpanel tracking
-  const cookieStore = await cookies()
-  const _userId = cookieStore.get('user_id')?.value
-
   // return
   return (
     <html lang={locale}>
-      <body suppressHydrationWarning>
+      <body>
         <NextIntlClientProvider messages={messages}>
           <UiProvider locale={locale}>
             <RestApiProvider>
