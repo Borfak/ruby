@@ -1,2 +1,1 @@
-export * from './instruments.api'
-export * from './instruments.query'
+export { getInstrumentsList } from './instruments.api'

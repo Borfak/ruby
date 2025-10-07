@@ -1,3 +1,5 @@
+'use client'
+
 import { AlertTriangle } from 'lucide-react'
 import { type FC } from 'react'
 

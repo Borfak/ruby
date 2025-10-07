@@ -2,11 +2,9 @@ import { Locale } from 'next-intl'
 import { setRequestLocale } from 'next-intl/server'
 import type { FC } from 'react'
 
-import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
-
-import { instrumentsListOptions } from '@/client/entities/api'
+import { getInstrumentsList } from '@/client/entities/api/instruments'
 import InstrumentsModule from '@/client/modules/instruments/instruments.module'
-import { getQueryClient } from '@/pkg/libraries/rest-api/service'
+import { ErrorMessage } from '@/client/shared/ui/error-message'
 
 // cache
 export const revalidate = 30
@@ -21,18 +19,13 @@ const InstrumentsPage: FC<Readonly<IProps>> = async (props) => {
   const { locale } = await props.params
   setRequestLocale(locale)
 
-  // prefetch
-  const queryClient = getQueryClient()
-  await queryClient.prefetchQuery(instrumentsListOptions())
-
-  const dehydratedState = dehydrate(queryClient)
-
-  // return
-  return (
-    <HydrationBoundary state={dehydratedState}>
-      <InstrumentsModule />
-    </HydrationBoundary>
-  )
+  // fetch data on server
+  try {
+    const instruments = await getInstrumentsList()
+    return <InstrumentsModule instruments={instruments} />
+  } catch {
+    return <ErrorMessage message='Failed to load instruments. Please try again later.' />
+  }
 }
 
 export default InstrumentsPage

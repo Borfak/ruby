@@ -1,23 +1,15 @@
-'use client'
-
 import type { FC } from 'react'
 
-import { useSuspenseQuery } from '@tanstack/react-query'
-
-import { instrumentsListOptions } from '../../entities/api'
-import { ErrorMessage } from '../../shared/ui/error-message'
+import type { Instrument } from '../../entities/models'
 
 // interface
-interface IProps {}
+interface IProps {
+  instruments: Instrument[]
+}
 
 // component
-const InstrumentsModule: FC<Readonly<IProps>> = () => {
-  const { data: instruments, error } = useSuspenseQuery(instrumentsListOptions())
-
-  // error state
-  if (error) {
-    return <ErrorMessage message='Failed to load instruments' />
-  }
+const InstrumentsModule: FC<Readonly<IProps>> = (props) => {
+  const { instruments } = props
 
   // return
   return (
