@@ -10,7 +10,7 @@ const withNextIntl = createNextIntlPlugin('./src/pkg/libraries/locale/request.ts
 const nextConfig: NextConfig = {
   logging: {
     fetches: {
-      fullUrl: envServer.NODE_ENV != 'production',
+      fullUrl: envServer.NODE_ENV !== 'production',
     },
   },
 }
