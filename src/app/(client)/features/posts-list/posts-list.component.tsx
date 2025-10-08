@@ -1,7 +1,7 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { type FC } from 'react'
+import { type FC, useMemo } from 'react'
 
 import { useQuery } from '@tanstack/react-query'
 
@@ -24,6 +24,18 @@ const PostsList: FC<Readonly<IProps>> = (props) => {
   const t = useTranslations('components.postsList')
   const searchQuery = useAppStore((state) => state.searchQuery)
 
+  // memoized filtered posts
+  const filtered = useMemo(() => {
+    const normalized = (searchQuery || '').trim().toLowerCase()
+    const postsArray = Array.isArray(posts) ? posts : []
+
+    if (!normalized) return postsArray
+
+    return postsArray.filter(
+      (p) => p.title.toLowerCase().includes(normalized) || p.body.toLowerCase().includes(normalized),
+    )
+  }, [posts, searchQuery])
+
   if (isLoading) {
     return <LoadingSpinner size='lg' />
   }
@@ -31,13 +43,6 @@ const PostsList: FC<Readonly<IProps>> = (props) => {
   if (isError) {
     return <ErrorMessage message={error?.message || t('failedToLoadPosts')} title={t('unableToLoadPosts')} />
   }
-
-  // filter posts by search query
-  const normalized = (searchQuery || '').trim().toLowerCase()
-  const postsArray = Array.isArray(posts) ? posts : []
-  const filtered = postsArray.filter(
-    (p) => !normalized || p.title.toLowerCase().includes(normalized) || p.body.toLowerCase().includes(normalized),
-  )
 
   // empty state
   if (!filtered || filtered.length === 0) {
