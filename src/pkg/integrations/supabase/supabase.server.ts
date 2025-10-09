@@ -2,7 +2,7 @@ import { cookies } from 'next/headers'
 
 import { createServerClient } from '@supabase/ssr'
 
-import { envServer } from '@/config/env/env.server'
+import { envServer } from '@/config/env'
 
 // supabase client
 export async function createClient() {

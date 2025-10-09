@@ -4,7 +4,6 @@ import type { FC } from 'react'
 
 import { getInstrumentsList } from '@/client/entities/api/instruments'
 import InstrumentsModule from '@/client/modules/instruments/instruments.module'
-import { ErrorMessage } from '@/client/shared/ui/error-message'
 
 // cache
 export const revalidate = 30
@@ -20,12 +19,9 @@ const InstrumentsPage: FC<Readonly<IProps>> = async (props) => {
   setRequestLocale(locale)
 
   // fetch data on server
-  try {
-    const instruments = await getInstrumentsList()
-    return <InstrumentsModule instruments={instruments} />
-  } catch {
-    return <ErrorMessage message='Failed to load instruments. Please try again later.' />
-  }
+  const instruments = await getInstrumentsList()
+
+  return <InstrumentsModule instruments={instruments} />
 }
 
 export default InstrumentsPage

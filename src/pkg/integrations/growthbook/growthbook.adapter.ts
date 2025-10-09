@@ -1,6 +1,6 @@
 import { GrowthBook } from '@growthbook/growthbook'
 
-import { envServer } from '@/config/env/env.server'
+import { envServer } from '@/config/env'
 
 // growthbook instance
 const gb = new GrowthBook({
