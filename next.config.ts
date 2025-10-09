@@ -10,7 +10,9 @@ const withNextIntl = createNextIntlPlugin('./src/pkg/libraries/locale/request.ts
 const nextConfig: NextConfig = {
   experimental: {
     reactCompiler: true,
+    optimizeServerReact: true,
   },
+  optimizePackageImports: ['lucide-react', '@heroui/react', 'framer-motion'],
   logging: {
     fetches: {
       fullUrl: envServer.NODE_ENV !== 'production',
