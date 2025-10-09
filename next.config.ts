@@ -8,6 +8,9 @@ import { envServer } from '@/config/env/env.server'
 const withNextIntl = createNextIntlPlugin('./src/pkg/libraries/locale/request.ts')
 
 const nextConfig: NextConfig = {
+  experimental: {
+    reactCompiler: true,
+  },
   logging: {
     fetches: {
       fullUrl: envServer.NODE_ENV !== 'production',

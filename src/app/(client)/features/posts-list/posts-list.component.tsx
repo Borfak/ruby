@@ -1,7 +1,7 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { type FC, useMemo } from 'react'
+import { type FC } from 'react'
 
 import { useQuery } from '@tanstack/react-query'
 
@@ -24,17 +24,12 @@ const PostsList: FC<Readonly<IProps>> = (props) => {
   const t = useTranslations('components.postsList')
   const searchQuery = useAppStore((state) => state.searchQuery)
 
-  // memoized filtered posts
-  const filtered = useMemo(() => {
-    const normalized = (searchQuery || '').trim().toLowerCase()
-    const postsArray = Array.isArray(posts) ? posts : []
-
-    if (!normalized) return postsArray
-
-    return postsArray.filter(
-      (p) => p.title.toLowerCase().includes(normalized) || p.body.toLowerCase().includes(normalized),
-    )
-  }, [posts, searchQuery])
+  // filtered posts
+  const normalized = (searchQuery || '').trim().toLowerCase()
+  const postsArray = Array.isArray(posts) ? posts : []
+  const filtered = !normalized
+    ? postsArray
+    : postsArray.filter((p) => p.title.toLowerCase().includes(normalized) || p.body.toLowerCase().includes(normalized))
 
   if (isLoading) {
     return <LoadingSpinner size='lg' />
