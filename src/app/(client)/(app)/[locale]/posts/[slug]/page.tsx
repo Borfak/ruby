@@ -5,12 +5,11 @@ import { type FC } from 'react'
 
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
 
-import { postBySlugOptions, userByIdOptions } from '@/client/entities/api/posts/posts.query'
+import { postBySlugOptions, userByIdOptions } from '@/client/entities/api/posts'
 import type { Post } from '@/client/entities/models'
+import { PostDetail } from '@/features/post-detail'
 import { Link } from '@/pkg/libraries/locale'
-import { getQueryClient } from '@/pkg/libraries/rest-api/service/rest-api.service'
-
-import { PostDetail } from '../../../../features/post-detail'
+import { getQueryClient } from '@/pkg/libraries/rest-api/service'
 
 // cache
 export const revalidate = 30
@@ -27,6 +26,7 @@ async function prefetchPostDetail(slug: string) {
   await queryClient.prefetchQuery(postBySlugOptions(slug))
 
   const post = queryClient.getQueryData<Post>(['posts', 'slug', slug])
+
   if (post?.userId) {
     await queryClient.prefetchQuery(userByIdOptions(post.userId))
   }

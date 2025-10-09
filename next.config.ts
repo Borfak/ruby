@@ -12,7 +12,9 @@ const nextConfig: NextConfig = {
     reactCompiler: true,
     optimizeServerReact: true,
   },
+
   optimizePackageImports: ['lucide-react', '@heroui/react', 'framer-motion', 'zod', 'zustand'],
+
   logging: {
     fetches: {
       fullUrl: envServer.NODE_ENV !== 'production',

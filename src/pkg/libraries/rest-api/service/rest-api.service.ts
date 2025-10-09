@@ -25,6 +25,7 @@ export const getQueryClient = () => {
     return makeQueryClient()
   } else {
     if (!browserQueryClient) browserQueryClient = makeQueryClient()
+
     return browserQueryClient
   }
 }

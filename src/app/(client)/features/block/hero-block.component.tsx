@@ -18,6 +18,7 @@ const HeroBlockComponent: FC<Readonly<IProps>> = () => {
       <CardBody className='py-12 text-center'>
         <div className='mx-auto max-w-3xl space-y-5'>
           <h2 className='text-3xl font-extrabold tracking-tight md:text-4xl'>{t('title')}</h2>
+
           <p className='text-foreground-600 md:text-lg'>{t('description')}</p>
         </div>
       </CardBody>

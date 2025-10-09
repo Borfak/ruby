@@ -16,6 +16,7 @@ interface IProps {
 // component
 const InstrumentsPage: FC<Readonly<IProps>> = async (props) => {
   const { locale } = await props.params
+
   setRequestLocale(locale)
 
   // fetch data on server

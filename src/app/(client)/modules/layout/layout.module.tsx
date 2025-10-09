@@ -18,9 +18,11 @@ const MainLayoutModule: FC<Readonly<IProps>> = ({ children }) => {
   return (
     <div className='flex min-h-screen flex-col'>
       <Header />
+
       <ContainerComponent variant='main' className='flex-1'>
         {children}
       </ContainerComponent>
+
       <Footer />
     </div>
   )

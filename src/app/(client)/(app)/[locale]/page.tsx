@@ -6,10 +6,9 @@ import { type FC } from 'react'
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
 
 import { postsListOptions } from '@/client/entities/api'
+import { HomeModule } from '@/modules/home'
 import { getFeatureValue } from '@/pkg/integrations/growthbook'
 import { getQueryClient } from '@/pkg/libraries/rest-api/service'
-
-import { HomeModule } from '../../modules/home/index'
 
 // cache
 export const revalidate = 30
@@ -26,6 +25,7 @@ const HomePage: FC<Readonly<IProps>> = async (props) => {
   setRequestLocale(locale)
 
   const queryClient = getQueryClient()
+
   await queryClient.prefetchQuery(postsListOptions())
 
   const dehydratedState = dehydrate(queryClient)

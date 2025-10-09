@@ -41,17 +41,21 @@ const PostCard: FC<Readonly<IProps>> = (props) => {
           <CardHeader className='pb-0'>
             <div className='flex w-full items-start justify-between'>
               <h3 className='text-foreground line-clamp-2 text-xl font-bold'>{post.title}</h3>
+
               <Chip size='sm' variant='flat' color='secondary'>
                 #{post.id}
               </Chip>
             </div>
           </CardHeader>
+
           <CardBody className='pt-3'>
             <p className='text-foreground-700 line-clamp-4 text-base leading-relaxed'>{post.body}</p>
           </CardBody>
+
           <CardFooter className='flex-col items-start gap-2 pt-0'>
             <div className='flex w-full items-center justify-between'>
               <span className='text-foreground-500 text-sm font-medium'>User {post.userId}</span>
+
               <Chip size='sm' variant='dot' color='success'>
                 New
               </Chip>
@@ -69,13 +73,16 @@ const PostCard: FC<Readonly<IProps>> = (props) => {
         <CardHeader className='pb-0'>
           <h3 className='text-foreground line-clamp-2 text-lg font-semibold'>{post.title}</h3>
         </CardHeader>
+
         <CardBody className='pt-2'>
           <p className='text-foreground-600 line-clamp-3 text-sm'>{post.body}</p>
         </CardBody>
+
         <CardFooter className='justify-between pt-0'>
           <Chip size='sm' variant='flat' color='primary'>
             #{post.id}
           </Chip>
+
           <span className='text-foreground-400 text-xs'>User {post.userId}</span>
         </CardFooter>
       </Card>

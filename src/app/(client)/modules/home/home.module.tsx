@@ -22,6 +22,7 @@ const HomeModule: FC<Readonly<IProps>> = (props) => {
   return (
     <div className='flex flex-col gap-6'>
       <HeroBlockComponent />
+
       <PostsList locale={locale} isNewPostCardDesignEnabled={isNewPostCardDesignEnabled} />
     </div>
   )

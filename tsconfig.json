@@ -18,6 +18,9 @@
       "@/*": ["./src/*"],
       "@/config/*": ["./src/config/*"],
       "@/pkg/*": ["./src/pkg/*"],
+      "@/modules/*": ["./src/app/(client)/modules/*"],
+      "@/features/*": ["./src/app/(client)/features/*"],
+      "@/shared/*": ["./src/app/(client)/shared/*"],
       "@/client/*": ["./src/app/(client)/*"],
     },
     "target": "ES2022"

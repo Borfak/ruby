@@ -31,17 +31,22 @@ const PostDetail: FC<Readonly<IProps>> = (props) => {
           <CardHeader className='pb-2'>
             <div className='flex flex-col space-y-4'>
               <Skeleton className='h-8 w-3/5 rounded-lg md:h-10' />
+
               <div className='flex items-center space-x-3'>
                 <Skeleton className='h-8 w-8 rounded-full' />
+
                 <div className='flex flex-col space-y-2'>
                   <Skeleton className='h-4 w-24 rounded' />
                   <Skeleton className='h-3 w-16 rounded' />
                 </div>
+
                 <Skeleton className='h-6 w-20 rounded-full' />
               </div>
             </div>
           </CardHeader>
+
           <Divider />
+
           <CardBody className='pt-6'>
             <div className='space-y-3'>
               <Skeleton className='h-4 w-full rounded' />
@@ -77,13 +82,16 @@ const PostDetail: FC<Readonly<IProps>> = (props) => {
             <div className='flex items-center justify-between'>
               <div className='flex items-center space-x-3'>
                 <Avatar icon={<User />} name={user?.name || 'Loading...'} size='sm' className='bg-primary' />
+
                 <div className='flex flex-col'>
                   <span className='text-sm font-medium'>
                     {isUserLoading ? tCommon('loading') : user?.name || t('unknownAuthor')}
                   </span>
+
                   <span className='text-foreground-400 text-xs'>@{user?.username || 'username'}</span>
                 </div>
               </div>
+
               <Chip size='sm' variant='flat' color='primary' startContent={<Calendar size={12} />}>
                 Post #{post.id}
               </Chip>
@@ -92,6 +100,7 @@ const PostDetail: FC<Readonly<IProps>> = (props) => {
         </CardHeader>
 
         <Divider />
+
         <button
           onClick={() => {
             throw new Error('test error works')
@@ -99,6 +108,7 @@ const PostDetail: FC<Readonly<IProps>> = (props) => {
         >
           Error
         </button>
+
         <CardBody className='pt-6'>
           <div className='prose max-w-none'>
             <p className='text-foreground-700 text-base leading-relaxed'>{post.body}</p>
@@ -107,13 +117,16 @@ const PostDetail: FC<Readonly<IProps>> = (props) => {
           {user && (
             <div className='border-divider mt-6 border-t pt-4'>
               <h3 className='mb-2 text-sm font-semibold'>{t('aboutAuthor')}</h3>
+
               <div className='text-foreground-500 flex flex-col space-y-1 text-sm'>
                 <span>
                   {t('email')}: {user.email}
                 </span>
+
                 <span>
                   {t('website')}: {user.website}
                 </span>
+
                 <span>
                   {t('company')}: {user.company.name}
                 </span>
@@ -127,6 +140,7 @@ const PostDetail: FC<Readonly<IProps>> = (props) => {
         <CardHeader>
           <h2 className='text-lg font-semibold'>{t('addComment')}</h2>
         </CardHeader>
+
         <CardBody>
           <CommentForm postId={post.id} />
         </CardBody>

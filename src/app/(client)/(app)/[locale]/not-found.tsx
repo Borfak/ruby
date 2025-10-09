@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 
-import { ContainerComponent } from '../../shared/ui/container'
-import NotFoundComponent from '../../shared/ui/not-found/not-found.component'
+import { ContainerComponent } from '@/shared/ui/container'
+import { NotFoundComponent } from '@/shared/ui/not-found'
 
 // component
 const NotFound: NextPage = () => {

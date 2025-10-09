@@ -15,6 +15,7 @@ const InstrumentsModule: FC<Readonly<IProps>> = (props) => {
   return (
     <div className='flex flex-col gap-4'>
       <h1 className='text-2xl font-semibold'>Instruments</h1>
+
       <ul className='list-disc pl-6'>
         {instruments.map((instrument) => (
           <li key={instrument.id}>
@@ -22,6 +23,7 @@ const InstrumentsModule: FC<Readonly<IProps>> = (props) => {
           </li>
         ))}
       </ul>
+
       {instruments.length === 0 && <p className='text-default-500'>No instruments found.</p>}
     </div>
   )

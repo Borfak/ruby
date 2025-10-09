@@ -16,6 +16,7 @@ class MixpanelClient {
     if (!MixpanelClient.instance) {
       MixpanelClient.instance = new MixpanelClient()
     }
+
     return MixpanelClient.instance
   }
 
@@ -49,7 +50,9 @@ class MixpanelClient {
 
   public identifyUser(userId: string, traits?: Record<string, unknown>): void {
     if (!this.isInitialized) return
+
     mixpanel.identify(userId)
+
     if (traits) {
       mixpanel.people.set(traits)
     }

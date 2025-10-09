@@ -10,6 +10,7 @@ const gb = new GrowthBook({
 })
 
 let initialized = false
+
 async function ensureInitialized() {
   if (!initialized) {
     await gb.init({ timeout: 2000 })

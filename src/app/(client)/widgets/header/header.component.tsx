@@ -38,6 +38,7 @@ const Header: FC<Readonly<IProps>> = () => {
     >
       <NavbarContent justify='start'>
         <NavbarMenuToggle className='sm:hidden' aria-label={t('openMenu')} />
+
         <NavbarBrand>
           <Link href={'/'} className='text-foreground inline-flex items-center gap-2 font-bold'>
             <Sparkles size={18} className='text-primary' />
@@ -58,6 +59,7 @@ const Header: FC<Readonly<IProps>> = () => {
             variant='bordered'
           />
         </NavbarItem>
+
         <NavbarItem className='sm:hidden'>
           <Button isIconOnly variant='light' aria-label={t('searchAria')}>
             <Search size={18} />
@@ -71,6 +73,7 @@ const Header: FC<Readonly<IProps>> = () => {
             {t('home')}
           </Link>
         </NavbarMenuItem>
+
         <NavbarMenuItem>
           <Link href={'/'} className='text-foreground-600 hover:text-foreground w-full'>
             {t('posts')}

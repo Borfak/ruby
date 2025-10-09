@@ -16,6 +16,7 @@ export default function middleware(request: NextRequest) {
 
   if (!userId && response) {
     const newUserId = generateUserId()
+
     response.cookies.set('user_id', newUserId, {
       maxAge: 60 * 60 * 24 * 365,
       path: '/',

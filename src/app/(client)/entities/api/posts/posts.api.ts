@@ -16,7 +16,9 @@ export const getPostById = (opt: QueryFunctionContext, { id }: { id: number }) =
 
 export const getPostBySlug = (opt: QueryFunctionContext, { slug }: { slug: string }) => {
   const id = parseInt(slug, 10)
+
   if (isNaN(id)) throw new Error('Invalid post slug')
+
   return apiGet<Post>(opt, `posts/${id}`)
 }
 
