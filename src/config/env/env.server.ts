@@ -11,6 +11,7 @@ export const envServer = createEnv({
     GROWTHBOOK_API_HOST: z.string().optional(),
     SUPABASE_URL: z.string().min(1, { message: 'SUPABASE_URL is required' }),
     SUPABASE_ANON_KEY: z.string().min(1, { message: 'SUPABASE_ANON_KEY is required' }),
+    DATABASE_URL: z.string().min(1, { message: 'DATABASE_URL is required' }),
   },
   runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
@@ -19,5 +20,6 @@ export const envServer = createEnv({
     GROWTHBOOK_API_HOST: process.env.GROWTHBOOK_API_HOST,
     SUPABASE_URL: process.env.SUPABASE_URL,
     SUPABASE_ANON_KEY: process.env.SUPABASE_ANON_KEY,
+    DATABASE_URL: process.env.DATABASE_URL,
   },
 })

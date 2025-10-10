@@ -11,6 +11,9 @@
 # testing
 /coverage
 
+# Drizzle
+# drizzle/
+# .drizzle
 
 # cursor
 .cursor

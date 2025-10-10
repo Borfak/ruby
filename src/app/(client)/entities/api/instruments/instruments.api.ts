@@ -1,16 +1,7 @@
-import { createClient } from '@/pkg/integrations/supabase'
-
-import type { Instrument } from '../../models'
+import { dbService } from '../../db'
+import type { Instrument } from '../../db/schemas'
 
 // api
 export const getInstrumentsList = async (): Promise<Instrument[]> => {
-  const supabase = await createClient()
-
-  const { data, error } = await supabase.from('instruments').select('id,name').order('id', { ascending: true })
-
-  if (error) {
-    throw new Error(`Failed to fetch instruments: ${error.message}`)
-  }
-
-  return data || []
+  return dbService.instruments.findAll()
 }

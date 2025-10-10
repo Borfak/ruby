@@ -1,6 +1,6 @@
 import type { FC } from 'react'
 
-import type { Instrument } from '../../entities/models'
+import { Instrument } from '../../entities/db/schemas'
 
 // interface
 interface IProps {
