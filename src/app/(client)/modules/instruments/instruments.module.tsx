@@ -1,30 +1,91 @@
+'use client'
+
+import ky from 'ky'
 import type { FC } from 'react'
+import { useState } from 'react'
 
 import { Instrument } from '../../entities/db/schemas'
 
 // interface
 interface IProps {
-  instruments: Instrument[]
+  initialInstruments: Instrument[]
 }
 
 // component
-const InstrumentsModule: FC<Readonly<IProps>> = (props) => {
-  const { instruments } = props
+const InstrumentsModule: FC<Readonly<IProps>> = ({ initialInstruments }) => {
+  const [instruments, setInstruments] = useState<Instrument[]>(initialInstruments)
+  const [name, setName] = useState('')
+  const [editId, setEditId] = useState<number | null>(null)
+
+  const handleCreate = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!name.trim()) return
+
+    const newInstrument = await ky.post('/api/instruments', { json: { name } }).json<Instrument>()
+    setInstruments([...instruments, newInstrument])
+    setName('')
+  }
+
+  const handleUpdate = async (id: number, newName: string) => {
+    const updated = await ky.put('/api/instruments', { json: { id, name: newName } }).json<Instrument>()
+    setInstruments(instruments.map((i) => (i.id === id ? updated : i)))
+    setEditId(null)
+  }
+
+  const handleDelete = async (id: number) => {
+    await ky.delete('/api/instruments', { json: { id } })
+    setInstruments(instruments.filter((i) => i.id !== id))
+  }
 
   // return
   return (
-    <div className='flex flex-col gap-4'>
-      <h1 className='text-2xl font-semibold'>Instruments</h1>
+    <div className='flex flex-col gap-6'>
+      <h1 className='text-3xl font-bold'>Instruments</h1>
 
-      <ul className='list-disc pl-6'>
+      <form onSubmit={handleCreate} className='flex gap-2'>
+        <input
+          type='text'
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder='Instrument name'
+          className='flex-1 rounded border px-3 py-2'
+        />
+        <button type='submit' className='rounded bg-blue-500 px-4 py-2 text-white'>
+          Add
+        </button>
+      </form>
+
+      <ul className='flex flex-col gap-2'>
         {instruments.map((instrument) => (
-          <li key={instrument.id}>
-            {instrument.id} - {instrument.name}
+          <li key={instrument.id} className='flex items-center gap-2 rounded border p-3'>
+            {editId === instrument.id ? (
+              <>
+                <input
+                  type='text'
+                  defaultValue={instrument.name}
+                  className='flex-1 rounded border px-2 py-1'
+                  onBlur={(e) => handleUpdate(instrument.id, e.target.value)}
+                  onKeyDown={(e) => e.key === 'Enter' && handleUpdate(instrument.id, e.currentTarget.value)}
+                  autoFocus
+                />
+                <button onClick={() => setEditId(null)} className='text-gray-500'>
+                  Cancel
+                </button>
+              </>
+            ) : (
+              <>
+                <span className='flex-1'>{instrument.name}</span>
+                <button onClick={() => setEditId(instrument.id)} className='text-blue-600'>
+                  Edit
+                </button>
+                <button onClick={() => handleDelete(instrument.id)} className='text-red-600'>
+                  Delete
+                </button>
+              </>
+            )}
           </li>
         ))}
       </ul>
-
-      {instruments.length === 0 && <p className='text-default-500'>No instruments found.</p>}
     </div>
   )
 }
