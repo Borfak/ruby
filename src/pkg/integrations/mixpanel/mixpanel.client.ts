@@ -1,83 +1,51 @@
-'use client'
-
 import mixpanel from 'mixpanel-browser'
 
-import { envClient } from '@/config/env'
+import { envClient } from '@/config/env/env.client'
 
-class MixpanelClient {
-  private static instance: MixpanelClient | null = null
-  private isInitialized = false
+let initialized = false
 
-  private constructor() {
-    this.initialize()
-  }
+function init() {
+  if (initialized) return
+  const token = envClient.NEXT_PUBLIC_MIXPANEL_TOKEN
+  if (!token) return
 
-  public static getInstance(): MixpanelClient {
-    if (!MixpanelClient.instance) {
-      MixpanelClient.instance = new MixpanelClient()
-    }
-
-    return MixpanelClient.instance
-  }
-
-  private initialize(): void {
-    if (this.isInitialized) return
-
-    const token = envClient.NEXT_PUBLIC_MIXPANEL_TOKEN
-    if (!token) return
-
-    mixpanel.init(token, {
-      track_pageview: true,
-      persistence: 'localStorage',
-      autocapture: true,
-      debug: false,
-      record_sessions_percent: 0,
-      api_host: envClient.NEXT_PUBLIC_MIXPANEL_API_HOST,
-    })
-
-    this.isInitialized = true
-
-    // track initial page view
-    if (typeof window !== 'undefined') {
-      this.trackPageView(window.location.pathname)
-    }
-  }
-
-  public trackEvent(eventName: string, properties?: Record<string, unknown>): void {
-    if (!this.isInitialized) return
-    mixpanel.track(eventName, properties)
-  }
-
-  public identifyUser(userId: string, traits?: Record<string, unknown>): void {
-    if (!this.isInitialized) return
-
-    mixpanel.identify(userId)
-
-    if (traits) {
-      mixpanel.people.set(traits)
-    }
-  }
-
-  public trackPageView(pageName?: string, properties?: Record<string, unknown>): void {
-    if (!this.isInitialized) return
-    mixpanel.track('Page View', {
-      page: pageName ?? window.location.pathname,
-      ...properties,
-    })
-  }
+  mixpanel.init(token, {
+    track_pageview: true,
+    persistence: 'localStorage',
+    autocapture: true,
+    debug: true,
+    record_sessions_percent: 0,
+    api_host: 'https://api-eu.mixpanel.com',
+  })
+  initialized = true
 }
 
-// export methods
-const mixpanelInstance = MixpanelClient.getInstance()
-
-export const trackEvent = (eventName: string, properties?: Record<string, unknown>) => {
-  mixpanelInstance.trackEvent(eventName, properties)
+function track(event: string, props?: Record<string, unknown>) {
+  console.log('[Mixpanel] track() called:', event, props)
+  init()
+  if (!initialized) {
+    console.warn('[Mixpanel] Cannot track - not initialized')
+    return
+  }
+  console.log('[Mixpanel] Tracking event:', event)
+  mixpanel.track(event, props)
 }
 
-export const identifyUser = (userId: string, traits?: Record<string, unknown>) => {
-  mixpanelInstance.identifyUser(userId, traits)
+function identify(id: string) {
+  init()
+  if (!initialized) return
+  mixpanel.identify(id)
 }
 
-export const trackPageView = (pageName?: string, properties?: Record<string, unknown>) => {
-  mixpanelInstance.trackPageView(pageName, properties)
+function peopleSet(props: Record<string, unknown>) {
+  init()
+  if (!initialized) return
+  mixpanel.people.set(props)
+}
+
+export const mixpanelService = {
+  init,
+  track,
+  identify,
+  peopleSet,
 }
