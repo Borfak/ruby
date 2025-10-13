@@ -1,1 +1,1 @@
-export { getInstrumentsList } from './instruments.api'
+export { createInstrument, deleteInstrument, getInstrumentsList, updateInstrument } from './instruments.api'

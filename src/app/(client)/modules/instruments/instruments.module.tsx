@@ -1,9 +1,9 @@
 'use client'
 
-import ky from 'ky'
 import type { FC } from 'react'
 import { useState } from 'react'
 
+import { createInstrument, deleteInstrument, updateInstrument } from '../../entities/api/instruments'
 import { Instrument } from '../../entities/db/schemas'
 
 // interface
@@ -21,19 +21,19 @@ const InstrumentsModule: FC<Readonly<IProps>> = ({ initialInstruments }) => {
     e.preventDefault()
     if (!name.trim()) return
 
-    const newInstrument = await ky.post('/api/instruments', { json: { name } }).json<Instrument>()
+    const newInstrument = await createInstrument(name)
     setInstruments([...instruments, newInstrument])
     setName('')
   }
 
   const handleUpdate = async (id: number, newName: string) => {
-    const updated = await ky.put('/api/instruments', { json: { id, name: newName } }).json<Instrument>()
+    const updated = await updateInstrument(id, newName)
     setInstruments(instruments.map((i) => (i.id === id ? updated : i)))
     setEditId(null)
   }
 
   const handleDelete = async (id: number) => {
-    await ky.delete('/api/instruments', { json: { id } })
+    await deleteInstrument(id)
     setInstruments(instruments.filter((i) => i.id !== id))
   }
 
