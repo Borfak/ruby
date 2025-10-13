@@ -2,7 +2,7 @@ import { Locale } from 'next-intl'
 import { setRequestLocale } from 'next-intl/server'
 import type { FC } from 'react'
 
-import { getInstrumentsList } from '@/client/entities/api/instruments'
+import { dbService } from '@/client/entities/db'
 import InstrumentsModule from '@/client/modules/instruments/instruments.module'
 
 export const dynamic = 'force-dynamic'
@@ -18,7 +18,7 @@ const InstrumentsPage: FC<Readonly<IProps>> = async (props) => {
 
   setRequestLocale(locale)
 
-  const instruments = await getInstrumentsList()
+  const instruments = await dbService.instruments.findAll()
 
   return <InstrumentsModule initialInstruments={instruments} />
 }

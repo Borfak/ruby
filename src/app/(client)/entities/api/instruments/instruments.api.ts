@@ -1,14 +1,12 @@
 import ky from 'ky'
 
-import { dbService } from '../../db'
 import type { Instrument } from '../../db/schemas'
 
-// server-side api
+// client-side api for internal Next.js routes
 export const getInstrumentsList = async (): Promise<Instrument[]> => {
-  return dbService.instruments.findAll()
+  return ky.get('/api/instruments').json<Instrument[]>()
 }
 
-// client-side api
 export const createInstrument = async (name: string): Promise<Instrument> => {
   return ky.post('/api/instruments', { json: { name } }).json<Instrument>()
 }
