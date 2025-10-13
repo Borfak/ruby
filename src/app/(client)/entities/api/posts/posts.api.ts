@@ -1,16 +1,23 @@
+import ky from 'ky'
+
 import type { QueryFunctionContext } from '@tanstack/react-query'
 
+import type { Post, User } from '@/client/entities/models'
 import { restApiFetcher } from '@/pkg/libraries/rest-api/fetcher'
 
-import type { Post, User } from '../../models'
-
-// GET request helper
+// GET request helper for external API
 const apiGet = async <T>(opt: QueryFunctionContext, url: string): Promise<T> => {
   return restApiFetcher.get(url, { signal: opt.signal, cache: 'force-cache', next: { revalidate: 30 } }).json()
 }
 
 // api
-export const getPostsList = (opt: QueryFunctionContext) => apiGet<Post[]>(opt, 'posts')
+export const getPostsList = (opt: QueryFunctionContext, params?: { q?: string }) => {
+  if (params && params.q) {
+    return ky.get('/api/posts', { searchParams: params, signal: opt.signal }).json<Post[]>()
+  }
+
+  return apiGet<Post[]>(opt, 'posts')
+}
 
 export const getPostById = (opt: QueryFunctionContext, { id }: { id: number }) => apiGet<Post>(opt, `posts/${id}`)
 

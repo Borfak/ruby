@@ -3,10 +3,10 @@ import { queryOptions } from '@tanstack/react-query'
 import { getPostById, getPostBySlug, getPostsList, getUserById } from './posts.api'
 
 // options
-export const postsListOptions = () =>
+export const postsListOptions = (q?: string) =>
   queryOptions({
-    queryKey: ['posts', 'list'] as const,
-    queryFn: (opt) => getPostsList(opt),
+    queryKey: ['posts', 'list', q || ''] as const,
+    queryFn: (opt) => getPostsList(opt, q ? { q } : undefined),
   })
 
 export const postByIdOptions = (id: number) =>

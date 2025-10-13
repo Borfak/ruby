@@ -6,6 +6,7 @@ import { type FC } from 'react'
 import { useQuery } from '@tanstack/react-query'
 
 import { postsListOptions } from '../../entities/api'
+import type { Post } from '../../entities/models'
 import { useAppStore } from '../../shared/store'
 import { ErrorMessage } from '../../shared/ui/error-message'
 import { LoadingSpinner } from '../../shared/ui/loading-spinner'
@@ -20,16 +21,10 @@ interface IProps {
 // component
 const PostsList: FC<Readonly<IProps>> = (props) => {
   const { locale = 'en', isNewPostCardDesignEnabled } = props
-  const { data: posts, isLoading, isError, error } = useQuery(postsListOptions())
-  const t = useTranslations('components.postsList')
   const searchQuery = useAppStore((state) => state.searchQuery)
-
-  // filtered posts
-  const normalized = (searchQuery || '').trim().toLowerCase()
+  const { data: posts, isLoading, isError, error } = useQuery(postsListOptions(searchQuery || ''))
+  const t = useTranslations('components.postsList')
   const postsArray = Array.isArray(posts) ? posts : []
-  const filtered = !normalized
-    ? postsArray
-    : postsArray.filter((p) => p.title.toLowerCase().includes(normalized) || p.body.toLowerCase().includes(normalized))
 
   if (isLoading) {
     return <LoadingSpinner size='lg' />
@@ -40,7 +35,7 @@ const PostsList: FC<Readonly<IProps>> = (props) => {
   }
 
   // empty state
-  if (!filtered || filtered.length === 0) {
+  if (!postsArray || postsArray.length === 0) {
     return (
       <div className='py-8 text-center'>
         <p className='text-foreground-500'>{t('noPostsFound')}</p>
@@ -51,7 +46,7 @@ const PostsList: FC<Readonly<IProps>> = (props) => {
   // return
   return (
     <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
-      {filtered.map((post) => (
+      {postsArray.map((post: Post) => (
         <PostCard key={post.id} post={post} locale={locale} isNewDesign={isNewPostCardDesignEnabled} />
       ))}
     </div>
