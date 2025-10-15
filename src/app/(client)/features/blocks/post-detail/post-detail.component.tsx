@@ -7,9 +7,9 @@ import { type FC } from 'react'
 import { Avatar, Card, CardBody, CardHeader, Chip, Divider, Skeleton } from '@heroui/react'
 import { useQuery } from '@tanstack/react-query'
 
-import { CommentForm } from './elements/comment-form'
+import { postBySlugOptions, userByIdOptions } from '@/app/(client)/entities/api'
 
-import { postBySlugOptions, userByIdOptions } from '../../entities/api'
+import { CommentForm } from './elements/comment-form'
 
 // interface
 interface IProps {

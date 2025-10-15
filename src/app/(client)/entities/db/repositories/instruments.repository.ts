@@ -6,7 +6,6 @@ import { Instrument, instruments } from '../schemas'
 
 // instruments repository
 export const InstrumentsRepository = {
-
   // find all instruments
   findAll: async (): Promise<Instrument[]> => {
     return db.select().from(instruments)

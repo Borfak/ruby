@@ -3,7 +3,6 @@
 // imports
 import { type FC, type ReactNode } from 'react'
 
-import { ContainerComponent } from '../../shared/ui/container'
 import { Footer } from '../../widgets/footer'
 import { Header } from '../../widgets/header'
 
@@ -19,9 +18,7 @@ const MainLayoutModule: FC<Readonly<IProps>> = ({ children }) => {
     <div className='flex min-h-screen flex-col'>
       <Header />
 
-      <ContainerComponent variant='main' className='flex-1'>
-        {children}
-      </ContainerComponent>
+      <main className='flex-1'>{children}</main>
 
       <Footer />
     </div>

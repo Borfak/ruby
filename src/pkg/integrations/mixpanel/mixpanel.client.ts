@@ -21,13 +21,10 @@ function init() {
 }
 
 function track(event: string, props?: Record<string, unknown>) {
-  console.log('[Mixpanel] track() called:', event, props)
   init()
   if (!initialized) {
-    console.warn('[Mixpanel] Cannot track - not initialized')
     return
   }
-  console.log('[Mixpanel] Tracking event:', event)
   mixpanel.track(event, props)
 }
 

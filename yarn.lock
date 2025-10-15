@@ -858,6 +858,15 @@
     "@heroui/shared-utils" "2.1.11"
     "@heroui/use-image" "2.1.12"
 
+"@heroui/image@^2.2.17":
+  version "2.2.17"
+  resolved "https://registry.yarnpkg.com/@heroui/image/-/image-2.2.17.tgz#9b9274651ffa8694d311db32488b416f9798dc01"
+  integrity sha512-B/MrWafTsiCBFnRc0hPTLDBh7APjb/lRuQf18umuh20/1n6KiQXJ7XGSjnrHaA6HQcrtMGh6mDFZDaXq9rHuoA==
+  dependencies:
+    "@heroui/react-utils" "2.1.14"
+    "@heroui/shared-utils" "2.1.12"
+    "@heroui/use-image" "2.1.13"
+
 "@heroui/input-otp@2.1.26":
   version "2.1.26"
   resolved "https://registry.yarnpkg.com/@heroui/input-otp/-/input-otp-2.1.26.tgz#bdcb291718b3e7c9a4c506a7c410a8dae20137a0"
@@ -1081,6 +1090,14 @@
     "@heroui/react-rsc-utils" "2.1.9"
     "@heroui/shared-utils" "2.1.11"
 
+"@heroui/react-utils@2.1.14":
+  version "2.1.14"
+  resolved "https://registry.yarnpkg.com/@heroui/react-utils/-/react-utils-2.1.14.tgz#33125a6537bf2f559ea9ed76e8b62c48cc37c3c7"
+  integrity sha512-hhKklYKy9sRH52C9A8P0jWQ79W4MkIvOnKBIuxEMHhigjfracy0o0lMnAUdEsJni4oZKVJYqNGdQl+UVgcmeDA==
+  dependencies:
+    "@heroui/react-rsc-utils" "2.1.9"
+    "@heroui/shared-utils" "2.1.12"
+
 "@heroui/react@^2.8.4":
   version "2.8.4"
   resolved "https://registry.yarnpkg.com/@heroui/react/-/react-2.8.4.tgz#58729133ab9688ec92da5681b9f27506375d1403"
@@ -1188,6 +1205,11 @@
   version "2.1.11"
   resolved "https://registry.yarnpkg.com/@heroui/shared-utils/-/shared-utils-2.1.11.tgz#0aedf0142c829ec4a41a47d827581ee503af2a87"
   integrity sha512-2zKVjCc9EMMk05peVpI1Q+vFf+dzqyVdf1DBCJ2SNQEUF7E+sRe1FvhHvPoye3TIFD/Fr6b3kZ6vzjxL9GxB6A==
+
+"@heroui/shared-utils@2.1.12":
+  version "2.1.12"
+  resolved "https://registry.yarnpkg.com/@heroui/shared-utils/-/shared-utils-2.1.12.tgz#2b0c654797985e8f66bfb7c00f5227ee05bf9ffb"
+  integrity sha512-0iCnxVAkIPtrHQo26Qa5g0UTqMTpugTbClNOrEPsrQuyRAq7Syux998cPwGlneTfB5E5xcU3LiEdA9GUyeK2cQ==
 
 "@heroui/skeleton@2.2.16":
   version "2.2.16"
@@ -1476,6 +1498,14 @@
   integrity sha512-/W6Cu5VN6LcZzYgkxJSvCEjM5gy0OE6NtRRImUDYCbUFNS1gK/apmOnIWcNbKryAg5Scpdoeu+g1lKKP15nSOw==
   dependencies:
     "@heroui/react-utils" "2.1.13"
+    "@heroui/use-safe-layout-effect" "2.1.8"
+
+"@heroui/use-image@2.1.13":
+  version "2.1.13"
+  resolved "https://registry.yarnpkg.com/@heroui/use-image/-/use-image-2.1.13.tgz#d5e733a0f673348597306c7d78c3b06bdd0115fa"
+  integrity sha512-NLApz+xin2bKHEXr+eSrtB0lN8geKP5VOea5QGbOCiHq4DBXu4QctpRkSfCHGIQzWdBVaLPoV+5wd0lR2S2Egg==
+  dependencies:
+    "@heroui/react-utils" "2.1.14"
     "@heroui/use-safe-layout-effect" "2.1.8"
 
 "@heroui/use-intersection-observer@2.2.14":

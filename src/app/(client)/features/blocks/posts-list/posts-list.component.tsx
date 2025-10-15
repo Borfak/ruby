@@ -5,12 +5,12 @@ import { type FC } from 'react'
 
 import { useQuery } from '@tanstack/react-query'
 
-import { postsListOptions } from '../../entities/api'
-import type { Post } from '../../entities/models'
-import { useAppStore } from '../../shared/store'
-import { ErrorMessage } from '../../shared/ui/error-message'
-import { LoadingSpinner } from '../../shared/ui/loading-spinner'
-import { PostCard } from '../../shared/ui/post-card'
+import { postsListOptions } from '@/app/(client)/entities/api'
+import type { Post } from '@/app/(client)/entities/models'
+import { useAppStore } from '@/app/(client)/shared/store'
+import { ErrorMessage } from '@/app/(client)/shared/ui/error-message'
+import { LoadingSpinner } from '@/app/(client)/shared/ui/loading-spinner'
+import { PostCard } from '@/app/(client)/shared/ui/post-card'
 
 // interface
 interface IProps {
