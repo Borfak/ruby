@@ -15,7 +15,8 @@ const HowItWorksComponent: FC<Readonly<IProps>> = () => {
   return (
     <Section background='white' className='-mt-16'>
       <Container variant='section'>
-        <h3 className='mb-12 text-center text-4xl font-bold'>How it Works</h3>
+        <h3 className='mb-8 text-center text-4xl font-semibold'>How it Works</h3>
+
         <div className='grid grid-cols-1 gap-8 md:grid-cols-3'>
           {STEPS.map((step, index) => (
             <div key={index} className='rounded-xl border-1 border-blue-100 bg-white p-6 text-left'>

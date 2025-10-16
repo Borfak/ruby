@@ -15,8 +15,10 @@ const BoostAbilitiesComponent: FC<Readonly<IProps>> = () => {
   return (
     <Section background='white'>
       <Container variant='section'>
-        <h3 className='mb-3 text-center text-4xl font-bold'>Boost Your Abilities</h3>
-        <p className='mb-8 text-center text-gray-600'>Unlock your potential with our comprehensive training package</p>
+        <h3 className='text-center text-4xl font-semibold'>Boost Your Abilities</h3>
+
+        <p className='mb-4 text-center text-gray-600'>Unlock your potential with our comprehensive training package</p>
+
         <div className='grid grid-cols-1 gap-6 md:grid-cols-3'>
           {BOOST_ABILITIES.map((ability, index) => (
             <Card key={index}>
@@ -26,8 +28,10 @@ const BoostAbilitiesComponent: FC<Readonly<IProps>> = () => {
                     {ability.number}
                   </div>
                 </div>
+
                 <h4 className='text-xl font-semibold'>{ability.title}</h4>
               </div>
+
               <ul className='space-y-2'>
                 {ability.features.map((feature, idx) => (
                   <li key={idx} className='flex items-start gap-2'>

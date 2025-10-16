@@ -7,14 +7,14 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const Button = ({ variant = 'primary', size = 'md', className = '', children, ...props }: ButtonProps) => {
-  const baseStyles = 'rounded-lg font-semibold cursor-pointer transition-all duration-200'
+  const baseStyles = 'rounded-lg font-semibold transition-all duration-200'
 
   const variantStyles = {
-    primary: 'bg-teal-700 text-white hover:bg-teal-600',
-    secondary: 'bg-gray-200 text-gray-900 hover:bg-gray-300',
-    outline: 'border-2 border-teal-700 text-teal-700 hover:bg-teal-700 hover:text-white',
-    disabled: 'cursor-not-allowed',
-    outlineSecondary: 'border-1 border-blue-500 text-blue-200',
+    primary: 'bg-teal-700 text-white hover:bg-teal-600 cursor-pointer',
+    secondary: 'bg-gray-200 text-gray-900 hover:bg-gray-300 cursor-pointer',
+    outline: 'border-2 border-teal-700 text-teal-700 hover:bg-teal-700 hover:text-white cursor-pointer',
+    disabled: 'cursor-not-allowed opacity-50 bg-teal-700 text-white',
+    outlineSecondary: 'border-1 border-blue-500 text-blue-200 cursor-pointer',
   }
 
   const sizeStyles = {

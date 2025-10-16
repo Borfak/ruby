@@ -21,13 +21,7 @@ const FooterComponent: FC<Readonly<IProps>> = () => {
         <div className='flex flex-col justify-between md:flex-row md:gap-5'>
           <div className='flex flex-col justify-start gap-6'>
             <div>
-              <Image
-                src={'/icons/footer/footer-logo.svg'}
-                alt='Social icon'
-                height={30}
-                width={105}
-                className='flex-1 rounded-xs'
-              />
+              <Image src={'/icons/logo.svg'} alt='myIQ Logo' height={30} width={105} className='flex-1 rounded-xs' />
             </div>
 
             <div className='flex gap-4 text-white'>

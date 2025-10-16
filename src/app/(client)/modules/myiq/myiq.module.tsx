@@ -8,6 +8,8 @@ import { FAQBlockComponent } from '@/app/(client)/features/myiq/faq-block'
 import { HeroSectionComponent } from '@/app/(client)/features/myiq/hero-block'
 import { HowItWorksComponent } from '@/app/(client)/features/myiq/how-it-works-block'
 import { PricingComponent } from '@/app/(client)/features/myiq/pricing-block'
+import ResultsBlockComponent from '@/app/(client)/features/myiq/results-block/results-block.component'
+import { MyIqHeaderComponent } from '@/app/(client)/widgets/myiq-header'
 
 // interface
 interface IProps {}
@@ -15,7 +17,8 @@ interface IProps {}
 // component
 const MyIqModule: FC<Readonly<IProps>> = () => {
   return (
-    <div className='min-h-screen'>
+    <>
+      <MyIqHeaderComponent />
       <HeroSectionComponent />
       <HowItWorksComponent />
       <AvailableTestsComponent />
@@ -24,7 +27,8 @@ const MyIqModule: FC<Readonly<IProps>> = () => {
       <CommunityComponent />
       <PricingComponent />
       <FAQBlockComponent />
-    </div>
+      <ResultsBlockComponent />
+    </>
   )
 }
 
