@@ -26,11 +26,10 @@ const InstrumentsPage: FC<Readonly<IProps>> = async (props) => {
 
   await queryClient.prefetchQuery(instrumentsListOptions())
 
-  const dehydratedState = dehydrate(queryClient)
 
   // return
   return (
-    <HydrationBoundary state={dehydratedState}>
+    <HydrationBoundary state={dehydrate(queryClient)}>
       <InstrumentsModule />
     </HydrationBoundary>
   )
