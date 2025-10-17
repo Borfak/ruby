@@ -11,7 +11,7 @@ import { Section } from '@/shared/ui/section'
 interface IProps {}
 
 // component
-const HeroSectionComponent: FC<Readonly<IProps>> = () => {
+const HeroBlockComponent: FC<Readonly<IProps>> = () => {
   // return
   return (
     <Section background='gradient' className='pt-20 pb-32'>
@@ -82,4 +82,4 @@ const HeroSectionComponent: FC<Readonly<IProps>> = () => {
   )
 }
 
-export default HeroSectionComponent
+export default HeroBlockComponent

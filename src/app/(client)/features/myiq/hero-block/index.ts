@@ -1,1 +1,1 @@
-export { default as HeroSectionComponent } from './hero-block.component'
+export { default as HeroBlockComponent } from './hero-block.component'

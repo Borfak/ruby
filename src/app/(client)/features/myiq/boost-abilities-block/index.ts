@@ -1,1 +1,1 @@
-export { default as BoostAbilitiesComponent } from './boost-abilities-block.component'
+export { default as BoostAbilitiesBlockComponent } from './boost-abilities-block.component'

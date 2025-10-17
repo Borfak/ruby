@@ -1,1 +1,1 @@
-export { default as PricingComponent } from './pricing-block.component'
+export { default as PricingBlockComponent } from './pricing-block.component'

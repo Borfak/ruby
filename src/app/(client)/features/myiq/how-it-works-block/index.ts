@@ -1,1 +1,1 @@
-export { default as HowItWorksComponent } from './how-it-works-block.component'
+export { default as HowItWorksBlockComponent } from './how-it-works-block.component'

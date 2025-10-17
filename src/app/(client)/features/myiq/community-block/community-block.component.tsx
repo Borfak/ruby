@@ -11,7 +11,7 @@ import { COMMUNITY_ICONS } from './community-block.constants'
 interface IProps {}
 
 // component
-const CommunityComponent: FC<Readonly<IProps>> = () => {
+const CommunityBlockComponent: FC<Readonly<IProps>> = () => {
   // return
   return (
     <Section background='default'>
@@ -44,4 +44,4 @@ const CommunityComponent: FC<Readonly<IProps>> = () => {
   )
 }
 
-export default CommunityComponent
+export default CommunityBlockComponent

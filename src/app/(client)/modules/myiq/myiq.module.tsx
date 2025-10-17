@@ -1,31 +1,32 @@
 import { FC } from 'react'
 
-import { AvailableTestsComponent } from '@/app/(client)/features/myiq/available-tests-block'
-import { BenefitsComponent } from '@/app/(client)/features/myiq/benefits-block'
-import { BoostAbilitiesComponent } from '@/app/(client)/features/myiq/boost-abilities-block'
-import { CommunityComponent } from '@/app/(client)/features/myiq/community-block'
-import { FAQBlockComponent } from '@/app/(client)/features/myiq/faq-block'
-import { HeroSectionComponent } from '@/app/(client)/features/myiq/hero-block'
-import { HowItWorksComponent } from '@/app/(client)/features/myiq/how-it-works-block'
-import { PricingComponent } from '@/app/(client)/features/myiq/pricing-block'
-import ResultsBlockComponent from '@/app/(client)/features/myiq/results-block/results-block.component'
-import { MyIqHeaderComponent } from '@/app/(client)/widgets/myiq-header'
+import { AvailableTestsBlockComponent } from '@/features/myiq/available-tests-block'
+import { BenefitsBlockComponent } from '@/features/myiq/benefits-block'
+import { BoostAbilitiesBlockComponent } from '@/features/myiq/boost-abilities-block'
+import { CommunityBlockComponent } from '@/features/myiq/community-block'
+import { FAQBlockComponent } from '@/features/myiq/faq-block'
+import { HeroBlockComponent } from '@/features/myiq/hero-block'
+import { HowItWorksBlockComponent } from '@/features/myiq/how-it-works-block'
+import { PricingBlockComponent } from '@/features/myiq/pricing-block'
+import { ResultsBlockComponent } from '@/features/myiq/results-block'
+import { MyIqHeaderComponent } from '@/widgets/myiq-header'
 
 // interface
 interface IProps {}
 
 // component
 const MyIqModule: FC<Readonly<IProps>> = () => {
+  // return
   return (
     <>
       <MyIqHeaderComponent />
-      <HeroSectionComponent />
-      <HowItWorksComponent />
-      <AvailableTestsComponent />
-      <BoostAbilitiesComponent />
-      <BenefitsComponent />
-      <CommunityComponent />
-      <PricingComponent />
+      <HeroBlockComponent />
+      <HowItWorksBlockComponent />
+      <AvailableTestsBlockComponent />
+      <BoostAbilitiesBlockComponent />
+      <BenefitsBlockComponent />
+      <CommunityBlockComponent />
+      <PricingBlockComponent />
       <FAQBlockComponent />
       <ResultsBlockComponent />
     </>

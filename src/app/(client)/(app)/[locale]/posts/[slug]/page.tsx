@@ -5,7 +5,7 @@ import { type FC } from 'react'
 
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
 
-import { PostDetail } from '@/app/(client)/features/blocks/post-detail'
+import { PostDetail } from '@/app/(client)/features/posts/post-detail'
 import { postBySlugOptions, userByIdOptions } from '@/client/entities/api/posts'
 import type { Post } from '@/client/entities/models'
 import { Link } from '@/pkg/libraries/locale'

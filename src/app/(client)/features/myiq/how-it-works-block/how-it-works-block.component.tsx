@@ -10,7 +10,7 @@ import { STEPS } from './how-it-works-block.constants'
 interface IProps {}
 
 // component
-const HowItWorksComponent: FC<Readonly<IProps>> = () => {
+const HowItWorksBlockComponent: FC<Readonly<IProps>> = () => {
   // return
   return (
     <Section background='white' className='-mt-16'>
@@ -33,4 +33,4 @@ const HowItWorksComponent: FC<Readonly<IProps>> = () => {
   )
 }
 
-export default HowItWorksComponent
+export default HowItWorksBlockComponent

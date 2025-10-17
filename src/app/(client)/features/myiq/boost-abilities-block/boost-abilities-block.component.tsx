@@ -10,7 +10,7 @@ import { BOOST_ABILITIES } from './boost-abilities-block.constants'
 interface IProps {}
 
 // component
-const BoostAbilitiesComponent: FC<Readonly<IProps>> = () => {
+const BoostAbilitiesBlockComponent: FC<Readonly<IProps>> = () => {
   // return
   return (
     <Section background='white'>
@@ -48,4 +48,4 @@ const BoostAbilitiesComponent: FC<Readonly<IProps>> = () => {
   )
 }
 
-export default BoostAbilitiesComponent
+export default BoostAbilitiesBlockComponent

@@ -13,7 +13,7 @@ import { TESTS } from './avaliable-tests-block.constants'
 interface IProps {}
 
 // component
-const AvailableTestsComponent: FC<Readonly<IProps>> = () => {
+const AvailableTestsBlockComponent: FC<Readonly<IProps>> = () => {
   // return
   return (
     <Section background='default'>
@@ -54,4 +54,4 @@ const AvailableTestsComponent: FC<Readonly<IProps>> = () => {
   )
 }
 
-export default AvailableTestsComponent
+export default AvailableTestsBlockComponent

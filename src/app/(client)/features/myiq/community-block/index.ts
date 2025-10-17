@@ -1,1 +1,1 @@
-export { default as CommunityComponent } from './community-block.component'
+export { default as CommunityBlockComponent } from './community-block.component'

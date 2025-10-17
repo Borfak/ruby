@@ -4,11 +4,11 @@ import dynamic from 'next/dynamic'
 import { Locale } from 'next-intl'
 import type { FC } from 'react'
 
-import { PostsList } from '@/app/(client)/features/blocks/posts-list'
+import { PostsList } from '@/app/(client)/features/posts/posts-list'
 import { ContainerComponent } from '@/app/(client)/shared/ui/container'
 
 const HeroBlockComponent = dynamic(() =>
-  import('@/app/(client)/features/blocks/block').then((m) => m.HeroBlockComponent),
+  import('@/app/(client)/features/posts/block').then((m) => m.HeroBlockComponent),
 )
 
 // interface

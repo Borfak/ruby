@@ -1,1 +1,1 @@
-export { default as BenefitsComponent } from './benefits-block.component'
+export { default as BenefitsBlockComponent } from './benefits-block.component'

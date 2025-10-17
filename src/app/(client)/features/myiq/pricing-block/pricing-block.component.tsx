@@ -14,7 +14,7 @@ import { PLANS } from './pricing-block.constants'
 interface IProps {}
 
 // component
-const PricingComponent: FC<Readonly<IProps>> = () => {
+const PricingBlockComponent: FC<Readonly<IProps>> = () => {
   // return
   return (
     <Section background='white'>
@@ -61,4 +61,4 @@ const PricingComponent: FC<Readonly<IProps>> = () => {
   )
 }
 
-export default PricingComponent
+export default PricingBlockComponent

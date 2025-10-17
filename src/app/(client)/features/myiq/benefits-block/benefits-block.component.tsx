@@ -11,7 +11,7 @@ import { BENEFITS } from './benefits-block.constants'
 interface IProps {}
 
 // component
-const BenefitsComponent: FC<Readonly<IProps>> = () => {
+const BenefitsBlockComponent: FC<Readonly<IProps>> = () => {
   // return
   return (
     <Section background='default'>
@@ -34,4 +34,4 @@ const BenefitsComponent: FC<Readonly<IProps>> = () => {
   )
 }
 
-export default BenefitsComponent
+export default BenefitsBlockComponent

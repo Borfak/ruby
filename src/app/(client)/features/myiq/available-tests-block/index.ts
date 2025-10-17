@@ -1,1 +1,1 @@
-export { default as AvailableTestsComponent } from './available-tests-block.component'
+export { default as AvailableTestsBlockComponent } from './available-tests-block.component'

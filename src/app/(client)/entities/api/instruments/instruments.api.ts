@@ -1,9 +1,11 @@
 import ky from 'ky'
 
+import type { QueryFunctionContext } from '@tanstack/react-query'
+
 import type { Instrument } from '../../db/schemas'
 
-export const getInstrumentsList = async (): Promise<Instrument[]> => {
-  return ky.get('/api/instruments').json<Instrument[]>()
+export const getInstrumentsList = async (opt: QueryFunctionContext): Promise<Instrument[]> => {
+  return ky.get('/api/instruments', { signal: opt.signal }).json<Instrument[]>()
 }
 
 export const createInstrument = async (name: string): Promise<Instrument> => {
