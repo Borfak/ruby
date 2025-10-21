@@ -7,7 +7,7 @@ export const RESULTS = [
   {
     flag: '/icons/flags/Denmark.png',
     name: 'David Heinemeier Hansson',
-    iq: '120',
+    iq: '130',
   },
   {
     flag: '/icons/flags/UA.svg',
@@ -27,7 +27,7 @@ export const RESULTS = [
   {
     flag: '/icons/flags/USA.png',
     name: 'Mark Zuckerberg',
-    iq: '130',
+    iq: '110',
   },
   {
     flag: '/icons/flags/UA.svg',

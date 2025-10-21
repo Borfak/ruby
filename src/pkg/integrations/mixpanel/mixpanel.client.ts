@@ -2,47 +2,53 @@ import mixpanel from 'mixpanel-browser'
 
 import { envClient } from '@/config/env/env.client'
 
-let initialized = false
+class MixpanelClient {
+  private static instance: MixpanelClient | null = null
+  private initialized = false
 
-function init() {
-  if (initialized) return
-  const token = envClient.NEXT_PUBLIC_MIXPANEL_TOKEN
-  if (!token) return
+  private constructor() {}
 
-  mixpanel.init(token, {
-    track_pageview: true,
-    persistence: 'localStorage',
-    autocapture: true,
-    debug: true,
-    record_sessions_percent: 0,
-    api_host: 'https://api-eu.mixpanel.com',
-  })
-  initialized = true
-}
-
-function track(event: string, props?: Record<string, unknown>) {
-  init()
-  if (!initialized) {
-    return
+  public static getInstance(): MixpanelClient {
+    if (!MixpanelClient.instance) {
+      MixpanelClient.instance = new MixpanelClient()
+    }
+    return MixpanelClient.instance
   }
-  mixpanel.track(event, props)
+
+  private init() {
+    if (this.initialized) return
+
+    const token = envClient.NEXT_PUBLIC_MIXPANEL_TOKEN
+    if (!token) return
+
+    mixpanel.init(token, {
+      track_pageview: true,
+      persistence: 'localStorage',
+      autocapture: true,
+      debug: true,
+      record_sessions_percent: 0,
+      api_host: 'https://api-eu.mixpanel.com',
+    })
+    this.initialized = true
+  }
+
+  public track(event: string, props?: Record<string, unknown>) {
+    this.init()
+    if (!this.initialized) return
+    mixpanel.track(event, props)
+  }
+
+  public identify(id: string) {
+    this.init()
+    if (!this.initialized) return
+    mixpanel.identify(id)
+  }
+
+  public peopleSet(props: Record<string, unknown>) {
+    this.init()
+    if (!this.initialized) return
+    mixpanel.people.set(props)
+  }
 }
 
-function identify(id: string) {
-  init()
-  if (!initialized) return
-  mixpanel.identify(id)
-}
-
-function peopleSet(props: Record<string, unknown>) {
-  init()
-  if (!initialized) return
-  mixpanel.people.set(props)
-}
-
-export const mixpanelService = {
-  init,
-  track,
-  identify,
-  peopleSet,
-}
+export const mixpanelService = MixpanelClient.getInstance()
